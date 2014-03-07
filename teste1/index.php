@@ -6,7 +6,7 @@
     </head>
     <body>
         <?php
-            echo "ola mundo";
+            echo "ola mundo doido";
         ?>
     </body>
 </html>
