@@ -8,6 +8,7 @@ class cliente_manager extends CI_Model{
     }
     
     public function get_clientes(){
+         $this->db->order_by("nome", "asc"); 
          $clientes_banco=$this->db->get('tb_cliente')->result();
          if(count($clientes_banco)>0){
              $lista=array();

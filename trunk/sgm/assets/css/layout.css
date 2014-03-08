@@ -143,3 +143,29 @@ label.error{
 	border-bottom-left-radius: 6px;
 	border-bottom-right-radius: 6px;
 }
+
+.pagination{
+    display: inline;
+    margin: 0px;
+}
+
+.dataTables_info{
+   
+}
+
+.dataTables_paginate{
+    float: right;
+}
+
+.pesquisa_tabela input[type=text] {
+    border-radius: 10px;
+      
+    
+}
+
+.pesquisa_tabela input[type=text]:focus {
+    border-color: #66AFE9;
+    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset, 0 0 8px rgba(102, 175, 233, 0.6);
+    outline: 0 none; 
+    
+}

@@ -19,7 +19,7 @@ class Login extends CI_Controller{
 
     public function logar(){
               	$usuario=$this->input->post('usuario');
-	      	$senha=$this->input->post('senha');
+	      	$senha=md5($this->input->post('senha'));
 		$this->db->where('login',$usuario);
 		$this->db->where('senha',$senha);
 		$this->db->where('adm',1);
