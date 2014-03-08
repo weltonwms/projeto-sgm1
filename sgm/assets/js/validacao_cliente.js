@@ -17,11 +17,12 @@ $(document).ready(function() {
 		rules:{
 			nome:{required:true},
 			rg:{required:true},
-			cpf:{required:true},
-			quadra:{required:true},
+			cpf:{required:true,verificaCPF:true},
+                        email:{email:true},
+			quadra:{required:true,number:true},
 			rua:{required:true},
 			cidade:{required:true},
-			casa:{required:true},
+			casa:{required:true,number:true},
 			bairro:{required:true},
 			telefone1:{required:true}
 
@@ -31,10 +32,11 @@ $(document).ready(function() {
 			nome:{required:'Digite o Nome'},
 			rg:{required:'Digite o RG'},
 			cpf:{required:'Digite o CPF'},
-			quadra:{required:'Digite a Quadra'},
+                        email:{email:'O Email está incorreto'},
+			quadra:{required:'Digite a Quadra',number:"Digite somente números"},
 			rua:{required:'Digite a Rua'},
 			cidade:{required:'Digite a Cidade'},
-			casa:{required:'Digite a Casa'},
+			casa:{required:'Digite a Casa',number:"Digite somente números"},
 			bairro:{required:'Digite o Bairro'},
 			telefone1:{required:'Digite o Telefone'}
 		}

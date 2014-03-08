@@ -1,5 +1,7 @@
 <?php echo "<script src='".base_url('assets/plugins/jquery.confirm.js')."'></script>"; ?>
 <?php echo "<script src='".base_url('assets/js/modalexclusao.js')."'></script>"; ?>
+<?php echo "<script src='".base_url('assets/plugins/data_table.js')."'></script>"; ?>
+<?php echo "<script src='".base_url('assets/js/tabela.js')."'></script>"; ?>
 <legend>Lista de Clientes Cadastrados</legend>
 
 <?php if($this->session->flashdata('msg_confirm')!=null):?>
@@ -14,12 +16,12 @@
 	class="glyphicon glyphicon-plus"></span> Novo Cliente
 </a>
 <br>
-<br>
+
 
 <!--inicio da tabela com lista de clientes-->
 
 
-<table class="table table-bordered table-striped custab table-condensed">
+<table id="tabela" class="table table-bordered table-striped custab table-condensed">
 	<thead>
 		<tr class="text-primary">
 			<th>Nome</th>
@@ -57,3 +59,4 @@
 
 	
 </table>
+

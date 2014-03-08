@@ -1,5 +1,6 @@
 </section> <!--fechamento da secao do conteudo-->
-<footer id="rodape" >
+
+<footer id="rodape" class="" >
 	<div align="center">
 		<img src="<?php echo base_url('assets/imgs/logo_pequena.png')?>" width="90px" height="33px" alt="assunto aqui"/> 
 	</div>
