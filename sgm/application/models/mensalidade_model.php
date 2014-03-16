@@ -15,12 +15,35 @@ class Mensalidade_model extends CI_Model {
         parent::__construct();
     }
     
+    public function cadastrar(){
+        $dados=array(
+           'vencimento'=>  $this->vencimento,
+            'valor'=>  $this->valor,
+            'id_conta'=>  $this->id_conta,
+            
+        );
+        $this->db->insert('tb_mensalidade',$dados);
+        if($this->db->affected_rows()>0){
+            return $this->db->insert_id();
+        }
+        return;
+    }
+
+
     public function set_id($id) {
         $this->id = $id;
     }
 
     public function set_vencimento($vencimento) {
-        $this->vencimento = $vencimento;
+         if (preg_match('/^\d{1,2}\/\d{1,2}\/\d{4}$/', $vencimento)) //verifica se é formato dd/mm/aaaa
+	{
+	    $partes=  explode("/", $vencimento);
+            $formato_mysql=$partes[2]."-".$partes[1]."-".$partes[0];
+            $this->vencimento=$formato_mysql;
+            
+	}
+       else
+           $this->vencimento = $vencimento;
     }
 
     public function set_valor($valor) {
