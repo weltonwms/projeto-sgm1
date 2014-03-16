@@ -2,7 +2,7 @@
 <?php echo "<script src='".base_url('assets/js/modalexclusao.js')."'></script>"; ?>
 <?php echo "<script src='".base_url('assets/plugins/data_table.js')."'></script>"; ?>
 <?php echo "<script src='".base_url('assets/js/tabela.js')."'></script>"; ?>
-<legend>Lista de Clientes Cadastrados</legend>
+<legend>Lista de Contas a Receber</legend>
 
 <?php if($this->session->flashdata('msg_confirm')!=null):?>
 	<div class="alert alert-<?php echo $this->session->flashdata('status')?> alert-dismissable">
@@ -11,22 +11,22 @@
 	</div>
 <?php endif;?>
 
-<a href="<?php echo base_url('cliente/novo_cliente')?>" type="button"
+<a href="<?php echo base_url('conta/nova_conta')?>" type="button"
 	class="btn btn-success navbar-right"> <span
-	class="glyphicon glyphicon-plus"></span> Novo Cliente
+	class="glyphicon glyphicon-plus"></span> Nova Conta
 </a>
 <br>
 
 
-<!--inicio da tabela com lista de clientes-->
+<!--inicio da tabela com lista de contas-->
 
 
 <table id="tabela" class="table table-bordered table-striped custab table-condensed">
 	<thead>
 		<tr class="text-primary">
-			<th>Nome</th>
-			<th>Endereço</th>
-			<th>Telefone</th>
+			<th>Código</th>
+			<th>Nr Doc</th>
+			<th>Devedor</th>
 			<th><span class="glyphicon glyphicon-pencil"></span> Editar</th>
 			<th><span class="text-danger"><span class="glyphicon glyphicon-trash">
                              </span>Excluir</span>
@@ -37,20 +37,20 @@
 
         <tbody>
 	
-        <?php foreach ($clientes as $cliente):?>
+        <?php foreach ($contas as $conta):?>
          <tr>
-                <td><?php echo $cliente->get_nome() ;?></td>
-		 <td><?php echo $cliente->get_endereco() ;?></td>
-		 <td><?php echo $cliente->get_telefone1() ;?></td>
+                <td><?php echo $conta->get_id() ;?></td>
+		 <td><?php echo $conta->get_nr_doc() ;?></td>
+		 <td><?php echo $conta->get_nome_cliente() ;?></td>
        
 		<td>
-                    <a href="<?php echo base_url('cliente/editar').'/'.$cliente->get_id()?>">
+                    <a href="<?php echo base_url('conta/editar').'/'.$conta->get_id()?>">
                         <span class="glyphicon glyphicon-pencil"></span> 
                     </a>
                 </td>
 		<td class="text-center">
-                    <a class="confirm text-danger" 
-                       href="<?php echo base_url('cliente/excluir').'/'.$cliente->get_id()?>">
+                    <a class="confirm_conta text-danger" 
+                       href="<?php echo base_url('conta/excluir').'/'.$conta->get_id()?>">
                         <span class="glyphicon glyphicon-trash"></span>
                     </a>
 		</td>

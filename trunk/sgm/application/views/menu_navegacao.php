@@ -4,7 +4,7 @@
 			<ul class="nav navbar-nav">
 				<li class=""><a href="#">Home</a></li>
 				<li class=""><a href="<?php echo base_url('cliente') ?>">Gerenciar Cliente</a></li>
-				<li class=""><a href="#">Gerenciar Conta</a></li>
+				<li class=""><a href="<?php echo base_url('conta') ?>">Gerenciar Conta</a></li>
 				<li class=""><a href="#">Emitir Relatório</a></li>
 			</ul>
 
