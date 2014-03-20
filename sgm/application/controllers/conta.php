@@ -1,7 +1,6 @@
 <?php
 
-if (!defined('BASEPATH'))
-    exit('No direct script access allowed');
+if (!defined('BASEPATH')) exit('No direct script access allowed');
 
 class Conta extends CI_Controller {
 
@@ -43,7 +42,16 @@ class Conta extends CI_Controller {
     }
     
     public function cadastrar(){
-        $this->Conta_manager->cadastrar($this->input->post());
+        $retorno=$this->Conta_manager->cadastrar($this->input->post());
+        if($retorno){
+            $this->session->set_flashdata('status','success');
+            $this->session->set_flashdata('msg_confirm','Conta Cadastrada com Sucesso!<br>'.
+                                            $retorno.' mensalidades incluídas na Conta.');
+        }
+        else{
+            $this->session->set_flashdata('status','danger');
+            $this->session->set_flashdata('msg_confirm','Não foi possível Cadastrar a Conta!');
+        }
         redirect('conta');
     }
     
@@ -57,12 +65,26 @@ class Conta extends CI_Controller {
 
 
     public function gravar_alteracao(){
-        $this->Conta_manager->gravar_alteracao($this->input->post());
+        $retorno=$this->Conta_manager->gravar_alteracao($this->input->post());
+         if($retorno){
+            $this->session->set_flashdata('status','success');
+            $this->session->set_flashdata('msg_confirm','Conta Alterada com Sucesso!');
+        }
+       
         redirect('conta');
     }
     
     public function excluir($id_conta){
-        $this->Conta_manager->excluir($id_conta);
+        $retorno=$this->Conta_manager->excluir($id_conta);
+        if($retorno){
+            $this->session->set_flashdata('status','success');
+            $this->session->set_flashdata('msg_confirm','Conta junto com Mensalidades
+                                            Excluída com Sucesso!');
+        }
+        else{
+            $this->session->set_flashdata('status','danger');
+            $this->session->set_flashdata('msg_confirm','Não foi possível excluir a Conta!');
+        }
         redirect('conta');
     }
 

@@ -28,7 +28,8 @@ class Conta_manager extends CI_Model {
         $this->Mensalidade_dao->set_id_conta($id_conta);
         $this->Mensalidade_dao->set_data_inicial($post['vencimento']);
         $this->Mensalidade_dao->set_valor($post['valor']);
-        $this->Mensalidade_dao->cadastrar_mensalidades();
+        $total_cadastradas= $this->Mensalidade_dao->cadastrar_mensalidades();
+        return count($total_cadastradas);
                 
     }
     
