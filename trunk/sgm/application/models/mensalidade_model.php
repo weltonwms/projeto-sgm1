@@ -90,7 +90,7 @@ class Mensalidade_model extends CI_Model {
         return $this->id_conta;
     }
 
-    public function get_quitada() {
+    public function is_quitada() {
         return $this->quitada;
     }
 

@@ -42,6 +42,19 @@ class Conta_composite extends CI_Model{
         return $this->conta->get_data_cadastro();
     }
     
+    public function get_total_mensalidades(){
+        return count($this->mensalidades);
+    }
+    
+    public function get_total_mensalidades_receber(){
+        $somente_mensalidades_nao_quitadas=array();
+        foreach ($this->mensalidades as $mensalidade):
+            if(!$mensalidade->is_quitada()){
+                $somente_mensalidades_nao_quitadas[]=$mensalidade;
+            }
+        endforeach;
+        return count($somente_mensalidades_nao_quitadas);
+    }
 }
 
 

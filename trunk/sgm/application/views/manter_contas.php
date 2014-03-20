@@ -27,10 +27,14 @@
 			<th>Código</th>
 			<th>Nr Doc</th>
 			<th>Devedor</th>
-			<th><span class="glyphicon glyphicon-pencil"></span> Editar</th>
-			<th><span class="text-danger"><span class="glyphicon glyphicon-trash">
+                        <th class="col-md-1 text-center">Total Mensalidades</th>
+                        <th class="col-md-1 text-center">Mensalidades a Receber</th>
+			<th class="col-md-1 text-center"><span class="glyphicon glyphicon-pencil"></span> Editar</th>
+			<th class="col-md-1 text-center"><span class="text-danger"><span class="glyphicon glyphicon-trash">
                              </span>Excluir</span>
                         </th>
+                        <th class="col-md-1 text-center"><span class="text-success"><span class="glyphicon glyphicon-usd">
+                                           </span> Gerenciar Mensalidades</span></th>
 
 		</tr>
 	</thead>
@@ -42,8 +46,9 @@
                 <td><?php echo $conta->get_id() ;?></td>
 		 <td><?php echo $conta->get_nr_doc() ;?></td>
 		 <td><?php echo $conta->get_nome_cliente() ;?></td>
-       
-		<td>
+                 <td><?php echo $conta->get_total_mensalidades() ;?></td>
+                 <td><?php echo $conta->get_total_mensalidades_receber() ;?></td>
+		<td class="text-center">
                     <a href="<?php echo base_url('conta/editar').'/'.$conta->get_id()?>">
                         <span class="glyphicon glyphicon-pencil"></span> 
                     </a>
@@ -54,6 +59,12 @@
                         <span class="glyphicon glyphicon-trash"></span>
                     </a>
 		</td>
+                <td class="text-center">
+                    <a class="text-success" 
+                       href="<?php echo base_url('mensalidade/manter').'/'.$conta->get_id()?>">
+                        <span class="glyphicon glyphicon-usd"></span> 
+                    </a>
+                </td>
 	</tr>
         <?php endforeach;?>
         </tbody>
