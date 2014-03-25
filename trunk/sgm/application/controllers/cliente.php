@@ -73,7 +73,8 @@ class Cliente extends CI_Controller{
         }
         else{
             $this->session->set_flashdata('status','danger');
-            $this->session->set_flashdata('msg_confirm','Não foi Excluir Cliente!');
+            $this->session->set_flashdata('msg_confirm','Não foi possível Excluir Cliente!
+                                            <br>Cliente Relacionado a alguma Conta');
         }
         redirect('cliente');
     }

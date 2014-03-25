@@ -45,8 +45,19 @@ class Mensalidade_model extends CI_Model {
        else
            $this->vencimento = $vencimento;
     }
-
+/***********************************************************
+ * O metodo set_valor recebe o valor com máscara 000.000,00
+ * e substitui o '.' por nada, e substitui a ',' por ponto.
+ * Isso é necessário para gravar do jeito certo no mysql
+ * formato 000000.00 (americano). O reg_match() existe
+ * para testar se o valor recebido termina em virgula seguido
+ * por 2 numeros.
+ */
     public function set_valor($valor) {
+        if(preg_match('/,[0-9]{2}$/', $valor) ){
+            $valor=  str_replace(".", "", $valor);
+            $valor=  str_replace(",", ".", $valor);
+        }
         $this->valor = $valor;
     }
 
@@ -75,7 +86,13 @@ class Mensalidade_model extends CI_Model {
     }
 
     public function get_vencimento() {
-        return $this->vencimento;
+         if (preg_match('/^\d{4}-\d{1,2}-\d{1,2}$/', $this->vencimento)){ //verifica se é formato aaaa/mm/dd
+            $partes=  explode("-", $this->vencimento);
+            $formato_brasil=$partes[2]."/".$partes[1]."/".$partes[0];
+            return $formato_brasil;
+        }
+        else
+            return $this->vencimento;
     }
 
     public function get_valor() {
@@ -100,6 +117,15 @@ class Mensalidade_model extends CI_Model {
 
     public function get_valor_pago() {
         return $this->valor_pago;
+    }
+    
+    public function get_status(){
+        $data_atual=date('Y-m-d');
+        $stamp_atual=  strtotime($data_atual);
+        $stamp_vencimento=  strtotime($this->vencimento);
+        if($stamp_atual > $stamp_vencimento)
+        return "Vencida";
+        
     }
 
 

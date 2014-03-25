@@ -2,7 +2,7 @@
 
 
 class Mensalidade_dao  extends CI_Model{
-    private $total_mensalidades;
+    private $total_mensalidades; //atributos usados na hora de cadastro multiplo
     private $data_inicial;
     private $valor;
     private $id_conta;
@@ -30,6 +30,7 @@ class Mensalidade_dao  extends CI_Model{
         if (count($mensalidade_banco) > 0) {
             $mensalidade = new $this->Mensalidade_model();
             $mensalidade->set_id($mensalidade_banco[0]->id);
+            $mensalidade->set_id_conta($mensalidade_banco[0]->id_conta);
             $mensalidade->set_quitada($mensalidade_banco[0]->quitada);
             $mensalidade->set_vencimento($mensalidade_banco[0]->vencimento);
             $mensalidade->set_valor($mensalidade_banco[0]->valor);

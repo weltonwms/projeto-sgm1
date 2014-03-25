@@ -88,8 +88,11 @@ echo "<script src='".base_url('assets/js/validacao_conta.js')."'></script>";
 			<div class="form-group">
 				<label class="control-label col-md-4">Valor</label>
                                 <div class="col-md-8">
-                                    <input id="valor" type="text"
-					class="form-control" name='valor' placeholder="Valor">
+                                    <div class="input-group">
+                                        <span class="input-group-addon">R$</span>
+                                        <input id="valor" type="text"
+					class="form-control money" name='valor' placeholder="Valor">
+                                    </div>
                                 </div>
 			</div>
 			

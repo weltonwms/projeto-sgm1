@@ -7,6 +7,7 @@ class Mensalidade extends CI_Controller{
         if (!$this->session->userdata('session_id') || !$this->session->userdata('logado') || !$this->session->userdata('adm')) {
             redirect("login");
         }
+        $this->load->model('Mensalidade_manager');
         
     }
 
@@ -28,7 +29,8 @@ class Mensalidade extends CI_Controller{
     }
     
     public function manter($id_conta){
-        echo "farei a manutenção da mensalidade depois $id_conta";
+        $dados['mensalidades']=  $this->Mensalidade_manager->get_mensalidades($id_conta);
+        $this->carrega_view('manter_mensalidades',$dados);
     }
 }
 
