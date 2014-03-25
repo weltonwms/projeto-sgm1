@@ -35,10 +35,10 @@ echo "<script src='".base_url('assets/js/validacao_cliente.js')."'></script>";
 					type="submit" class="btn btn-success" id="salvar">
 					<span class="glyphicon glyphicon-save"></span> Enviar Solicitação
 				</button>
-				<button id="voltar"
+				<a href="<?php echo base_url('login')?>"
 					type="button" class="btn btn-default">
 					<span class="glyphicon glyphicon-arrow-left"></span> Voltar
-				</button>
+				</a>
 
 			</div>
 		

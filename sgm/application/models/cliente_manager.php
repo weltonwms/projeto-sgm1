@@ -34,7 +34,11 @@ class cliente_manager extends CI_Model{
     }
     
     public function excluir($id_cliente){
-        return $this->Cliente_model->excluir($id_cliente);
+        if($this->Cliente_model->is_relacionado_a_tabela($id_cliente)){
+            return FALSE;
+        }
+        else
+            return $this->Cliente_model->excluir($id_cliente);
     }
     
     public function gravar_alteracao(array $post){

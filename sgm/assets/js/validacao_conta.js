@@ -8,7 +8,7 @@ $(document).ready(function() {
 
 /*********************Mascaras para os campos ****************************************/
 	$('.data').mask("00/00/0000");
-	
+	$('.money').mask('000.000.000.000.000,00', {reverse: true});
 
 /*************************************************************************************/
 
@@ -17,9 +17,10 @@ $(document).ready(function() {
 		rules:{
 			servico:{required:true},
 			id_cliente:{required:true},
-			vencimento:{required:true},
-                        nr_mensalidades:{required:true},
+			vencimento:{required:true,dateSuperior:true},
+                        nr_mensalidades:{required:true,number:true},
 			valor:{required:true},
+                        data_cadastro:{date:true}
 			
 		},
 	
@@ -27,8 +28,9 @@ $(document).ready(function() {
 			servico:{required:'Digite o Nome'},
 			id_cliente:{required:'Selecione o Cliente'},
 			vencimento:{required:'Digite o Vencimento Inicial'},
-                        nr_mensalidades:{required:'Digite o Total de Mensalidades'},
-			valor:{required:'Digite o valor'},
+                        nr_mensalidades:{required:'Digite o Total de Mensalidades',
+                                            number:'Digite somente números'},
+			valor:{required:'Digite o valor'}
 			
 		}
 	});//fechamento do validate

@@ -155,9 +155,10 @@ class Cliente_model extends CI_Model{
         $this->db->where('id',$id_cliente);
         $this->db->delete('tb_cliente');
         if($this->db->affected_rows()>0){
-            return TRUE;
+             return TRUE;
         }
         return;
+      
     }
     
     public function gravar_alteracao(){
@@ -181,6 +182,14 @@ class Cliente_model extends CI_Model{
         }
         return;
     
+    }
+    
+    public function is_relacionado_a_tabela($id_cliente){
+        $this->db->where('id_cliente',  $id_cliente);
+        $resultado=  $this->db->get('tb_conta')->result();
+        if(count($resultado)>0){
+            return TRUE;
+        }
     }
 
 

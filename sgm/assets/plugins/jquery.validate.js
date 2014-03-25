@@ -1228,3 +1228,51 @@ jQuery.validator.addMethod("verificaCPF", function(value, element) {
       if ((cpf.charAt(9) != a[9]) || (cpf.charAt(10) != a[10]) || cpf.match(expReg)) return false;
       return true;
   }, "Informe um CPF válido."); // Mensagem padrão
+  
+  //validação de data
+  
+  $.validator.addMethod(  
+      "date",  
+      function(value, element) {  
+           var check = false;  
+           var re = /^\d{1,2}\/\d{1,2}\/\d{4}$/;  
+           if( re.test(value)){  
+                var adata = value.split('/');  
+                var gg = parseInt(adata[0],10);  
+                var mm = parseInt(adata[1],10);  
+                var aaaa = parseInt(adata[2],10);  
+                var xdata = new Date(aaaa,mm-1,gg);  
+                if ( ( xdata.getFullYear() == aaaa ) && ( xdata.getMonth () == mm - 1 ) && ( xdata.getDate() == gg ) )  
+                     check = true;  
+                else  
+                     check = false;  
+           } else  
+                check = false;  
+           return this.optional(element) || check;  
+      },  
+      "Insira uma data válida"  //Mensagem Padrao
+ );  
+ 
+ //Validação para aceitar apenas datas superiores a data do presente.
+ $.validator.addMethod(  
+      "dateSuperior",  
+      function(value, element) {  
+           var check = false;  
+           var re = /^\d{1,2}\/\d{1,2}\/\d{4}$/;  
+           if( re.test(value)){  
+                var adata = value.split('/');  
+                var gg = parseInt(adata[0],10);  
+                var mm = parseInt(adata[1],10);  
+                var aaaa = parseInt(adata[2],10);  
+                var xdata = new Date(aaaa,mm-1,gg); 
+                var hoje=new Date();
+                if ( ( xdata.getFullYear() == aaaa ) && ( xdata.getMonth () == mm - 1 ) && ( xdata.getDate() == gg ) && (hoje < xdata  ))  
+                     check = true;  
+                else  
+                     check = false;  
+           } else  
+                check = false;  
+           return this.optional(element) || check;  
+      },  
+      "Insira uma data válida maior que a presente data"  //Mensagem Padrao
+ );  
