@@ -2,6 +2,8 @@
 echo "<script src='".base_url('assets/plugins/jquery.validate.js')."'></script>";
 echo "<script src='".base_url('assets/plugins/jquery.mask.js')."'></script>";
 echo "<script src='".base_url('assets/js/validacao_conta.js')."'></script>";
+echo link_tag(array('href'=>'assets/plugins/chosen/chosen.css','rel'=>'stylesheet','type'=>'text/css'));
+echo "<script src='".base_url('assets/plugins/chosen/chosen.jquery.js')."'></script>";
 ?>
 <legend>Cadastro de Nova Conta</legend>
 
@@ -22,31 +24,8 @@ echo "<script src='".base_url('assets/js/validacao_conta.js')."'></script>";
                                 </div>
 
 			</div>
-                        <div class="form-group">
-				<label class="control-label col-md-4">Código do Cliente</label>
-                                <div class="col-md-8">
-                                    <input id="cod_cliente" type="text"
-					class="form-control" name='' placeholder="Cod Cliente">
-                                </div>
-			</div>
-			<div class="form-group">
-				<label class="control-label col-md-4">Cliente</label>
-                                <div class="col-md-8">
-                                    <select name="id_cliente" class="form-control">
-                                        <option value="">--Selecione--</option>
-                                        <?php
-                                            foreach($clientes as $cliente):
-                                                echo "<option value='{$cliente->get_id()}'>";
-                                                echo $cliente->get_nome();
-                                                echo "</option>";
-                                            endforeach;
-                                        ?>
-                                    </select>
-					
-                                </div>
-			</div>
-			
-			
+                        
+						
 			<div class="form-group">
 				<label class="control-label col-md-4">Nr Doc</label> 
                                 <div class="col-md-8">
@@ -59,6 +38,23 @@ echo "<script src='".base_url('assets/js/validacao_conta.js')."'></script>";
                                 <div class="col-md-8">
                                 <input 	id="data_cadastro" type="text" class="form-control data" name='data_cadastro'
 					placeholder="Deixe em Branco para data atual">
+                                </div>
+			</div>
+            
+                        <div class="form-group">
+				<label class="control-label col-md-4">Cliente</label>
+                                <div class="col-md-8">
+                                    <select  name="id_cliente" class="form-control meu_chosen" >
+                                        <option value="" >Selecione</option>
+                                        <?php
+                                            foreach($clientes as $cliente):
+                                                echo "<option value='{$cliente->get_id()}'>";
+                                                echo "(cod {$cliente->get_id()}) ".$cliente->get_nome();
+                                                echo "</option>";
+                                            endforeach;
+                                        ?>
+                                    </select>
+					
                                 </div>
 			</div>
             </fieldset>

@@ -28,9 +28,62 @@ class Mensalidade extends CI_Controller{
         $this->load->view('html_footer');
     }
     
-    public function manter($id_conta){
-        $dados['mensalidades']=  $this->Mensalidade_manager->get_mensalidades($id_conta);
-        $this->carrega_view('manter_mensalidades',$dados);
+       
+    public function gerenciar($id_conta){
+        $this->load->model('Conta_manager');
+        $dados['conta']= $this->Conta_manager->get_conta($id_conta);
+        $this->carrega_view('manter_mensalidades', $dados);
+    }
+    
+    public function manter(){
+        if($this->input->post('id_mensalidade')) 
+            $this->gravar_alteracao ();
+        else
+            $this->adicionar ();
+    }
+    
+    private function adicionar(){
+        $retorno=$this->Mensalidade_manager->adicionar($this->input->post());
+         if($retorno){
+            $this->session->set_flashdata('status','success');
+            $this->session->set_flashdata('msg_confirm','Mensalidade Adicionada à Conta com Sucesso!');
+        }
+        else{
+            $this->session->set_flashdata('status','danger');
+            $this->session->set_flashdata('msg_confirm','Não foi possível Adicionar Mensalidade!');
+        }
+        $url="mensalidade/gerenciar/".$this->input->post('id_conta');
+        redirect($url);
+    }
+    
+    private function gravar_alteracao(){
+        $retorno=$this->Mensalidade_manager->gravar_alteracao($this->input->post());
+         if($retorno){
+            $this->session->set_flashdata('status','success');
+            $this->session->set_flashdata('msg_confirm','Mensalidade Alterada com Sucesso!');
+        }
+        else{
+            $this->session->set_flashdata('status','danger');
+            $this->session->set_flashdata('msg_confirm','Não foi possível Alterar Mensalidade!');
+        }
+        $url="mensalidade/gerenciar/".$this->input->post('id_conta');
+        redirect($url);
+    }
+
+
+    public function excluir($id_mensalidade, $id_conta){
+        $retorno=  $this->Mensalidade_manager->excluir($id_mensalidade);
+        echo $id_mensalidade;
+        if($retorno){
+            $this->session->set_flashdata('status','success');
+            $this->session->set_flashdata('msg_confirm','Mensalidade Excluída da Conta com Sucesso!');
+        }
+        else{
+            $this->session->set_flashdata('status','danger');
+            $this->session->set_flashdata('msg_confirm','Não foi possível Excluir Mensalidade!');
+        }
+        $url="mensalidade/gerenciar/".$id_conta;
+        redirect($url);
     }
 }
 

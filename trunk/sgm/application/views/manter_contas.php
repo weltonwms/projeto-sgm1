@@ -61,7 +61,7 @@
 		</td>
                 <td class="text-center">
                     <a class="text-success" 
-                       href="<?php echo base_url('mensalidade/manter').'/'.$conta->get_id()?>">
+                       href="<?php echo base_url('mensalidade/gerenciar').'/'.$conta->get_id()?>">
                         <span class="glyphicon glyphicon-usd"></span> 
                     </a>
                 </td>

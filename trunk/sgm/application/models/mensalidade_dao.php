@@ -15,6 +15,7 @@ class Mensalidade_dao  extends CI_Model{
     public function get_mensalidades($id_conta) {
         $lista = array();
         $this->db->where('id_conta', $id_conta);
+        $this->db->order_by("vencimento", "asc"); 
         $mensalidades_banco = $this->db->get('tb_mensalidade')->result();
         if (count($mensalidades_banco) > 0) {
            foreach ($mensalidades_banco as $mensalidade) {

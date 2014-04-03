@@ -1,4 +1,6 @@
 $(document).ready(function() {
+    
+    $('.meu_chosen').chosen();
 
 /***********************Acao para o Botao Voltar**************************************/
 	$("#voltar").click(function(){
@@ -13,6 +15,7 @@ $(document).ready(function() {
 /*************************************************************************************/
 
 /*****************Regras de validação*************************************************/
+	$.validator.setDefaults({ ignore: ":hidden:not(select)" }) 
 	$("#form_conta").validate({
 		rules:{
 			servico:{required:true},

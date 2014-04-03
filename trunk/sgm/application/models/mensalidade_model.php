@@ -28,6 +28,31 @@ class Mensalidade_model extends CI_Model {
         }
         return;
     }
+    
+    public function gravar_alteracao(){
+        $dados=array(
+           'vencimento'=>  $this->vencimento,
+            'valor'=>  $this->valor,
+            'id_conta'=>  $this->id_conta,
+            
+        );
+        $this->db->where('id',  $this->id);
+        $this->db->update('tb_mensalidade',$dados);
+        if($this->db->affected_rows()>0){
+            return TRUE;
+        }
+        return;
+    }
+
+
+    public function excluir($id_mensalidade){
+        $this->db->where('id',$id_mensalidade);
+        $this->db->delete('tb_mensalidade');
+        if($this->db->affected_rows()>0){
+            return TRUE;
+        }
+        return;
+    }
 
 
     public function set_id($id) {
