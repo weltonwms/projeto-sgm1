@@ -169,3 +169,7 @@ label.error{
     outline: 0 none; 
     
 }
+
+.panel{
+    margin-bottom: 2px;
+}

@@ -14,4 +14,11 @@ $(document).ready(function() {
 		confirmButton : " Excluir",
 		cancelButton : " Cancelar"
 	});
+        
+        $(".confirm_mensalidade").confirm({
+		text : "Deseja realmente excluir esta Mensalidade?",
+		title : "  Exclusão de Mensalidade",
+		confirmButton : " Excluir",
+		cancelButton : " Cancelar"
+	});
 });

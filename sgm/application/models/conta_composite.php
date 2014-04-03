@@ -46,6 +46,26 @@ class Conta_composite extends CI_Model{
         return count($this->mensalidades);
     }
     
+    public function get_mensalidades(){
+        return $this->mensalidades;
+    }
+    
+    public function get_mensalidade($n){
+        $n--;
+        if(array_key_exists($n, $this->mensalidades)){
+            return $this->mensalidades[$n];
+        }
+    }
+    
+    public function get_endereco_cliente(){
+        /*
+        return "Rua: ".$this->cliente->get_rua()." QD: ".$this->cliente->get_quadra().
+            " Casa: ".$this->cliente->get_casa();/*
+        */
+        return $this->cliente->get_endereco();
+    }
+
+
     public function get_total_mensalidades_receber(){
         $somente_mensalidades_nao_quitadas=array();
         foreach ($this->mensalidades as $mensalidade):
@@ -54,6 +74,10 @@ class Conta_composite extends CI_Model{
             }
         endforeach;
         return count($somente_mensalidades_nao_quitadas);
+    }
+    
+    public function ordenar_mensalidades_por_vencimento(){
+        
     }
 }
 
