@@ -30,10 +30,14 @@ class Conta extends CI_Controller {
     }
 
     public function index() {
-        $dados['contas'] = $this->Conta_manager->get_contas();
+        $dados['contas_receber'] = $this->Conta_manager->get_contas_receber();
         $this->carrega_view('manter_contas', $dados);
     }
     
+    public function abrir_contas_recebidas(){
+        $dados['contas_recebidas'] = $this->Conta_manager->get_contas_recebidas();
+        $this->carrega_view('contas_recebidas', $dados);
+    }
     
     public function nova_conta(){
         $this->load->model('Cliente_manager');
@@ -88,15 +92,7 @@ class Conta extends CI_Controller {
         redirect('conta');
     }
 
-    public function testar(){
-        $this->load->model('Mensalidade_dao','men');
-        $this->men->cadastrar_mensalidades(8,'09/02/2012',20,1);
-        
-        //$this->incrementa_data('09/08/2015', 30);
-        //$this->load->model('Conta_composite_dao','cont');
-        //echo "<pre>";print_r($this->cont->get_conta_composite(1));
-       // print_r($expression);
-    }
+   
     
        
 
