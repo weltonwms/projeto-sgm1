@@ -41,7 +41,7 @@
 
         <tbody>
 	
-        <?php foreach ($contas as $conta):?>
+        <?php foreach ($contas_receber as $conta):?>
          <tr>
                 <td><?php echo $conta->get_id() ;?></td>
 		 <td><?php echo $conta->get_nr_doc() ;?></td>

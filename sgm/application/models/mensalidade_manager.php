@@ -30,6 +30,15 @@ class Mensalidade_manager extends CI_Model {
     public function excluir($id_mensalidade){
         return $this->Mensalidade_model->excluir($id_mensalidade);
     }
+    
+    public function quitar(array $post){
+        $this->Mensalidade_model->set_id($post['id_mensalidade']);
+        $this->Mensalidade_model->set_id_conta($post['id_conta']);
+        $this->Mensalidade_model->set_data_quitacao($post['data_quitacao']);
+        $this->Mensalidade_model->set_valor_pago($post['valor_pago']);
+        $this->Mensalidade_model->set_quitada(1);
+        return $this->Mensalidade_model->quitar();
+    }
 }
 
 ?>

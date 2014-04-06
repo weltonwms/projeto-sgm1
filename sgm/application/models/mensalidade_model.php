@@ -53,6 +53,21 @@ class Mensalidade_model extends CI_Model {
         }
         return;
     }
+    
+    public function quitar(){
+         $dados=array(
+           'data_quitacao'=>  $this->data_quitacao,
+            'valor_pago'=>  $this->valor_pago,
+            'quitada'=>  $this->quitada,
+            
+        );
+        $this->db->where('id',  $this->id);
+        $this->db->update('tb_mensalidade',$dados);
+        if($this->db->affected_rows()>0){
+            return TRUE;
+        }
+        return;
+    }
 
 
     public function set_id($id) {
@@ -99,7 +114,14 @@ class Mensalidade_model extends CI_Model {
     }
 
     public function set_data_quitacao($data_quitacao) {
-        $this->data_quitacao = $data_quitacao;
+        if (preg_match('/^\d{1,2}\/\d{1,2}\/\d{4}$/', $data_quitacao)) //verifica se é formato dd/mm/aaaa
+	{
+	    $partes=  explode("/", $data_quitacao);
+            $formato_mysql=$partes[2]."-".$partes[1]."-".$partes[0];
+            $this->data_quitacao=$formato_mysql;
+        }
+       else
+           $this->data_quitacao = $data_quitacao;
     }
 
     public function set_valor_pago($valor_pago) {

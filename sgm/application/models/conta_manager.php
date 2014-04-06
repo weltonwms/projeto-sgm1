@@ -10,6 +10,14 @@ class Conta_manager extends CI_Model {
     public function get_contas() {
        return $this->Conta_composite_dao->get_contas_composite();
     }
+    
+     public function get_contas_receber() {
+       return $this->Conta_composite_dao->get_contas_receber_composite();
+    }
+    
+    public function get_contas_recebidas(){
+       return $this->Conta_composite_dao->get_contas_recebidas_composite(); 
+    }
 
     public function get_conta($id_conta) {
         return $this->Conta_composite_dao->get_conta_composite($id_conta);

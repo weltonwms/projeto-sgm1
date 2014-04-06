@@ -73,7 +73,6 @@ class Mensalidade extends CI_Controller{
 
     public function excluir($id_mensalidade, $id_conta){
         $retorno=  $this->Mensalidade_manager->excluir($id_mensalidade);
-        echo $id_mensalidade;
         if($retorno){
             $this->session->set_flashdata('status','success');
             $this->session->set_flashdata('msg_confirm','Mensalidade Excluída da Conta com Sucesso!');
@@ -84,6 +83,26 @@ class Mensalidade extends CI_Controller{
         }
         $url="mensalidade/gerenciar/".$id_conta;
         redirect($url);
+    }
+    
+    public function quitar(){
+        $retorno=  $this->Mensalidade_manager->quitar($this->input->post());
+         if($retorno){
+            $this->session->set_flashdata('status','success');
+            $this->session->set_flashdata('msg_confirm','Mensalidade Quitada com Sucesso!');
+        }
+        else{
+            $this->session->set_flashdata('status','danger');
+            $this->session->set_flashdata('msg_confirm','Não foi possível Quitar Mensalidade!');
+        }
+        $url="mensalidade/gerenciar/".$this->input->post('id_conta');
+        redirect($url);
+    }
+    
+    public function detalhar_mensalidades_recebidas($id_conta){
+        $this->load->model('Conta_manager');
+        $dados['conta']= $this->Conta_manager->get_conta($id_conta);
+        $this->carrega_view('mensalidades_recebidas', $dados);
     }
 }
 

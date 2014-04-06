@@ -23,6 +23,44 @@ class Conta_composite_dao extends CI_Model{
         }
          return $lista;
     }
+    
+     public function get_contas_receber_composite() {
+         $lista = array();
+         $this->db->distinct();
+         $this->db->select('c.id');
+         $this->db->from('tb_conta c');
+         $this->db->join('tb_mensalidade m', 'c.id = m.id_conta','inner');
+        $this->db->where('m.quitada',0);
+        $contas_banco = $this->db->get()->result();
+       
+        if (count($contas_banco) > 0) {
+           foreach ($contas_banco as $conta) {
+                $lista[] = $this->get_conta_composite($conta->id);
+            }
+
+           
+        }
+         return $lista;
+    }
+    
+    public function get_contas_recebidas_composite() {
+         $lista = array();
+         $this->db->distinct();
+         $this->db->select('c.id');
+         $this->db->from('tb_conta c');
+         $this->db->join('tb_mensalidade m', 'c.id = m.id_conta','inner');
+        $this->db->where('m.quitada',1);
+        $contas_banco = $this->db->get()->result();
+       
+        if (count($contas_banco) > 0) {
+           foreach ($contas_banco as $conta) {
+                $lista[] = $this->get_conta_composite($conta->id);
+            }
+
+           
+        }
+         return $lista;
+    }
 
     public function get_conta_composite($id_conta) {
         $this->db->where('id', $id_conta);

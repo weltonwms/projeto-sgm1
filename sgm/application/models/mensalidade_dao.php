@@ -18,8 +18,12 @@ class Mensalidade_dao  extends CI_Model{
         $this->db->order_by("vencimento", "asc"); 
         $mensalidades_banco = $this->db->get('tb_mensalidade')->result();
         if (count($mensalidades_banco) > 0) {
+            $nr_parcela=0;
            foreach ($mensalidades_banco as $mensalidade) {
-                $lista[] = $this->get_mensalidade($mensalidade->id);
+               $nr_parcela++;
+               $obj_model_mensalidade= $this->get_mensalidade($mensalidade->id);
+               $obj_model_mensalidade->set_nr_parcela($nr_parcela);
+               $lista[]= $obj_model_mensalidade;
             }
         }
         return $lista;
@@ -37,6 +41,7 @@ class Mensalidade_dao  extends CI_Model{
             $mensalidade->set_valor($mensalidade_banco[0]->valor);
             $mensalidade->set_nr_parcela($mensalidade_banco[0]->nr_parcela);
             $mensalidade->set_data_quitacao($mensalidade_banco[0]->data_quitacao);
+            $mensalidade->set_valor_pago($mensalidade_banco[0]->valor_pago);
             return $mensalidade;
         }
         return;

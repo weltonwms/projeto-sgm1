@@ -37,7 +37,7 @@ echo "<script src='".base_url('assets/plugins/chosen/chosen.jquery.js')."'></scr
 				<label class="control-label col-md-4">Data Cadastro</label> 
                                 <div class="col-md-8">
                                 <input 	id="data_cadastro" type="text" class="form-control data" name='data_cadastro'
-					placeholder="Deixe em Branco para data atual">
+					value="<?php echo date('d/m/Y');?>">
                                 </div>
 			</div>
             

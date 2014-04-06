@@ -58,10 +58,7 @@ class Conta_composite extends CI_Model{
     }
     
     public function get_endereco_cliente(){
-        /*
-        return "Rua: ".$this->cliente->get_rua()." QD: ".$this->cliente->get_quadra().
-            " Casa: ".$this->cliente->get_casa();/*
-        */
+       
         return $this->cliente->get_endereco();
     }
 
@@ -76,9 +73,37 @@ class Conta_composite extends CI_Model{
         return count($somente_mensalidades_nao_quitadas);
     }
     
-    public function ordenar_mensalidades_por_vencimento(){
-        
+     public function get_total_mensalidades_recebidas(){
+        $somente_mensalidades_quitadas=array();
+        foreach ($this->mensalidades as $mensalidade):
+            if($mensalidade->is_quitada()){
+                $somente_mensalidades_quitadas[]=$mensalidade;
+            }
+        endforeach;
+        return count($somente_mensalidades_quitadas);
     }
+    
+    public function get_mensalidades_receber(){
+        $somente_mensalidades_nao_quitadas=array();
+        foreach ($this->mensalidades as $mensalidade):
+            if(!$mensalidade->is_quitada()){
+                $somente_mensalidades_nao_quitadas[]=$mensalidade;
+            }
+        endforeach;
+        return $somente_mensalidades_nao_quitadas;
+    }
+    
+     public function get_mensalidades_recebidas(){
+        $somente_mensalidades_quitadas=array();
+        foreach ($this->mensalidades as $mensalidade):
+            if($mensalidade->is_quitada()){
+                $somente_mensalidades_quitadas[]=$mensalidade;
+            }
+        endforeach;
+        return $somente_mensalidades_quitadas;
+    }
+    
+   
 }
 
 
