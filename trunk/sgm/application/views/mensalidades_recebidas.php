@@ -5,7 +5,7 @@
 <?php echo "<script src='".base_url('assets/plugins/jquery.mask.js')."'></script>";?>
 <?php echo "<script src='".base_url('assets/js/validacao_mensalidade.js')."'></script>";?>
 <!--inicio do bloco de cabeçalho das mensalidades com informações da conta-->
-<h4>Lista de Mensalidades a Receber</h4>
+<h4>Lista de Mensalidades Recebidas (Inativas) </h4>
 <div class="row ">
     <div class="panel panel-default">
 
@@ -44,7 +44,11 @@
 
 <!--inicio da tabela com lista de mensalidades recebidas-->
 <br>
-
+<a href="<?php echo base_url('conta/abrir_contas_recebidas')?>"
+    type="button" class="btn btn-default navbar-right">
+    <span class="glyphicon glyphicon-arrow-left"></span> Voltar
+</a>
+<br><br>
 <table class="table table-bordered table-striped custab table-condensed">
     <thead>
         <tr class="text-primary">
@@ -70,11 +74,11 @@
                 <td class=""><?php echo $mensalidade->get_nr_parcela() . " de " . $conta->get_total_mensalidades(); ?></td>
                 <td class=""><?php echo $mensalidade->get_vencimento(); ?></td>
                 <td><?php echo $mensalidade->get_data_quitacao(); ?></td>
-                <td class="valor"><?php echo "R$ " . number_format($mensalidade->get_valor(), 2, ",", "."); ?></td>
-
-                <td><?php echo $mensalidade->get_valor_pago(); ?></td>
+                <td><?php echo "R$ " . number_format($mensalidade->get_valor(), 2, ",", "."); ?></td>
+                <td><?php echo "R$ " . number_format($mensalidade->get_valor_pago(), 2, ",", "."); ?></td>
+                
                 <td class="text-center">
-                    <a class="confirm_mensalidade text-danger" 
+                    <a class="confirm_mensalidade_recebida text-danger" 
                        href="<?php echo base_url('mensalidade/excluir_recebida') . '/' . 
                                $mensalidade->get_id().'/'.$conta->get_id() ?>">
                         <span class="glyphicon glyphicon-trash"></span>
@@ -86,6 +90,18 @@
     </tbody>
 
 
+</table>
+
+<table class='table table-condensed table-responsive'>
+    <tr class="info">
+        <td><strong class="text-info">Valor Total Recebido</strong></td>
+         <td><?php echo "R$ " . number_format($conta->get_total_recebido(), 2, ",", "."); ?></td>
+    </tr>
+    <tr class="info">
+        <td><strong class="text-info">Valor Total a Receber</strong></td>
+         <td ><?php echo "R$ " . number_format($conta->get_total_a_receber(), 2, ",", "."); ?></td>
+    </tr>
+    
 </table>
 
 

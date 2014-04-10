@@ -21,4 +21,12 @@ $(document).ready(function() {
 		confirmButton : " Excluir",
 		cancelButton : " Cancelar"
 	});
+        
+         $(".confirm_mensalidade_recebida").confirm({
+		text : "Deseja realmente excluir esta Mensalidade?<br>\n\
+                        A conta perderá essa informação.",
+		title : "  Exclusão de Mensalidade Recebida",
+		confirmButton : " Excluir",
+		cancelButton : " Cancelar"
+	});
 });

@@ -85,6 +85,20 @@ class Mensalidade extends CI_Controller{
         redirect($url);
     }
     
+    public function excluir_recebida($id_mensalidade, $id_conta){
+        $retorno=  $this->Mensalidade_manager->excluir($id_mensalidade);
+        if($retorno){
+            $this->session->set_flashdata('status','success');
+            $this->session->set_flashdata('msg_confirm','Mensalidade Excluída da Conta com Sucesso!');
+        }
+        else{
+            $this->session->set_flashdata('status','danger');
+            $this->session->set_flashdata('msg_confirm','Não foi possível Excluir Mensalidade!');
+        }
+        $url="mensalidade/detalhar_mensalidades_recebidas/".$id_conta;
+        redirect($url);
+    }
+    
     public function quitar(){
         $retorno=  $this->Mensalidade_manager->quitar($this->input->post());
          if($retorno){
@@ -104,5 +118,7 @@ class Mensalidade extends CI_Controller{
         $dados['conta']= $this->Conta_manager->get_conta($id_conta);
         $this->carrega_view('mensalidades_recebidas', $dados);
     }
+    
+    
 }
 

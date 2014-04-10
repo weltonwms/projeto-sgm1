@@ -159,7 +159,7 @@ class Mensalidade_model extends CI_Model {
     }
 
     public function get_data_quitacao() {
-        return $this->data_quitacao;
+        return date('d/m/Y', strtotime($this->data_quitacao));
     }
 
     public function get_valor_pago() {

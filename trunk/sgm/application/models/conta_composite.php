@@ -103,6 +103,26 @@ class Conta_composite extends CI_Model{
         return $somente_mensalidades_quitadas;
     }
     
+    public function get_total_a_receber(){
+        $total=0;
+        foreach ($this->mensalidades as $mensalidade):
+            if(!$mensalidade->is_quitada()){
+               $total+=$mensalidade->get_valor();
+            }
+        endforeach;
+        return $total;
+    }
+    
+    public function get_total_recebido(){
+         $total=0;
+        foreach ($this->mensalidades as $mensalidade):
+            if($mensalidade->is_quitada()){
+               $total+=$mensalidade->get_valor_pago();
+            }
+        endforeach;
+        return $total;
+    }
+    
    
 }
 
