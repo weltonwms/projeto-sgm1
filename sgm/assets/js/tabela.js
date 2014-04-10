@@ -23,6 +23,24 @@ $(document).ready(function(){
 
 
     } );
+    
+     $('#tabela_mensalidades').dataTable( {
+	 "sDom":'ft<"row" <"col-md-4"i ><"col-md-8" p><"clearfix">',
+        "bPaginate": false,
+        "bSort": false,
+                 
+	  "oLanguage": {
+            "sLengthMenu": "Mostrar _MENU_ registros por página",
+            "sZeroRecords": "Nenhum registro encontrado",
+            "sInfo": "Mostrando _TOTAL_ registro(s)",
+            "sInfoEmpty": "<span class='text-danger'>Mostrando 0 / 0 de 0 registros</span>",
+            "sInfoFiltered": "<span class='text-danger'>(filtrado de _MAX_ registros)</span>",
+            "sSearch": "<span class='glyphicon glyphicon-search'></span> Pesquisar: "
+            
+        }
+
+
+    } );
 
 
 

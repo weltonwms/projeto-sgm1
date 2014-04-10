@@ -60,7 +60,7 @@
 <!--inicio da tabela com lista de mensalidades-->
 <br>
 
-<table id="tabela" class="table table-bordered table-striped custab table-condensed">
+<table id="tabela_mensalidades" class="table table-bordered table-striped custab table-condensed">
     <thead>
         <tr class="text-primary">
             <th>Parcela</th>
@@ -254,9 +254,19 @@
     });
     
     $("#btn_adicionar_mensalidade").click(function(){
-        $('.modal-title').html('Adicionar Mensalidade');
+        ultimo_vencimento=$('.vencimento:last').html();
+        ultimo_valor=$('.valor:last').html().substring(3);
+       if(ultimo_vencimento!==undefined){
+           novo_vencimento=adicionarMesData(ultimo_vencimento);
+           $("#valor").val(ultimo_valor);
+           $("#vencimento").val(novo_vencimento);
+       }
+       else{
         $("#valor").val('');
         $("#vencimento").val('');
+       }
+       // adicionarMesData(ultimo_vencimento);
+        $('.modal-title').html('Adicionar Mensalidade');
         $("#id_mensalidade").val('');
         $("#modal_manter_mensalidade").modal('show');
     });
@@ -273,4 +283,13 @@
          $('#valor_pago').val(valor.html().substring(3));
          $("#modal_quitar_mensalidade").modal('show');
     });
+    
+    function adicionarMesData(data){
+        array=data.split('/');
+        d= new Date(array[2],parseInt(array[1])-1,parseInt(array[0]));
+        function pad(s) { return (s < 10) ? '0' + s : s; }
+        d.setMonth(d.getMonth()+1);
+        minhaData=pad(d.getDate())+'/'+ pad(d.getMonth()+1) +'/'+ d.getFullYear();
+        return minhaData;
+    }
 </script>
