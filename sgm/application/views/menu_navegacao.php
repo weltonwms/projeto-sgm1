@@ -2,7 +2,7 @@
 		<nav class="navbar navbar-default" >
 			
 			<ul class="nav navbar-nav">
-				<li class=""><a href="#">Home</a></li>
+				<li class=""><a href="<?php echo base_url('home')?>">Home</a></li>
 				<li class=""><a href="<?php echo base_url('cliente') ?>">Gerenciar Cliente</a></li>
 				<li class="dropdown"><a data-toggle="dropdown" href="#">Gerenciar Conta <span class="caret"></span></a>
                                     <ul class="dropdown-menu">

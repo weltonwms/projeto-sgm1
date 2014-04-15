@@ -173,3 +173,9 @@ label.error{
 .panel{
     margin-bottom: 2px;
 }
+
+#slide{
+        position: relative;
+        left: 250px;
+        top:90px;  
+}
