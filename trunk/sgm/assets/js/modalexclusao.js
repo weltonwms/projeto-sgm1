@@ -29,4 +29,19 @@ $(document).ready(function() {
 		confirmButton : " Excluir",
 		cancelButton : " Cancelar"
 	});
+        
+         $(".confirm_solicitacao").confirm({
+		text : "Deseja realmente Rejeitar essa Solicitação?<br>\n\
+                        O Cliente não terá Acesso ao Sistema.",
+		title : "  Rejeição de Solicitação",
+		confirmButton : " Rejeitar",
+		cancelButton : " Cancelar"
+	});
+        
+        $(".confirm_usuario").confirm({
+		text : "Deseja realmente Excluir este Usuário?",
+		title : "  Exclusão de Usuário",
+		confirmButton : " Excluir",
+		cancelButton : " Cancelar"
+	});
 });

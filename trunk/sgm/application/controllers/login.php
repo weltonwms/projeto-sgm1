@@ -50,7 +50,7 @@ class Login extends CI_Controller{
     }
     
     public function recuperar_senha(){
-        $this->load->model('Solicitacao_manager_model','solicitacao');
+        $this->load->model('Solicitacao_manager','solicitacao');
         $status=$this->solicitacao->solicitar_senha($this->input->post());
         $this->session->set_flashdata('msg',$this->enviar_msg($status) );
 	redirect("login/solicitar_recuperacao_senha");
@@ -61,9 +61,12 @@ class Login extends CI_Controller{
         $mensagem=array(
             0=>"Cliente Inválido. Esse email e Nome não Constam na Base de Dados!",
             1=>"A solicitação já foi registrada. Aguarde a Análise de Seu pedido.",
-            3=>"Solicitação Realizada com Sucesso! <br>
-                Caso a solicitação seja aprovada em torno de 48h Você receberá uma nova Senha por email",
-            4=>"Não foi possível Registrar a solicitacão"
+            2=>"Solicitação Enviada com Sucesso! <br>
+                Caso a solicitação seja aprovada, em torno de 48h Você receberá uma nova Senha por email",
+            3=>"Nova Solicitação Enviada com Sucesso! <br>
+                Caso a solicitação seja aprovada, em torno de 48h Você receberá uma nova Senha por email",
+            4=>"Solicitação Rejeitada e Bloqueada por Administrador",
+            5=>"Ocorreu Algum Erro na Requisição"
         );
         return $mensagem[$status];
     }
