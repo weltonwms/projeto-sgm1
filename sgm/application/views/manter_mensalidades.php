@@ -265,7 +265,7 @@
         $("#valor").val('');
         $("#vencimento").val('');
        }
-       // adicionarMesData(ultimo_vencimento);
+      
         $('.modal-title').html('Adicionar Mensalidade');
         $("#id_mensalidade").val('');
         $("#modal_manter_mensalidade").modal('show');

@@ -25,7 +25,7 @@ $(document).ready(function(){
     } );
     
      $('#tabela_mensalidades').dataTable( {
-	 "sDom":'ft<"row" <"col-md-4"i ><"col-md-8" p><"clearfix">',
+	"sDom":'ft<"row" <"col-md-4"i ><"col-md-8" p><"clearfix">',
         "bPaginate": false,
         "bSort": false,
                  

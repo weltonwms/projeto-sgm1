@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: localhost
--- Tempo de Geração: 09/04/2014 às 23h11min
+-- Tempo de Geração: 20/04/2014 às 23h28min
 -- Versão do Servidor: 5.5.35
 -- Versão do PHP: 5.3.10-1ubuntu3.10
 
@@ -36,15 +36,6 @@ CREATE TABLE IF NOT EXISTS `ci_sessions` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Extraindo dados da tabela `ci_sessions`
---
-
-INSERT INTO `ci_sessions` (`session_id`, `ip_address`, `user_agent`, `last_activity`, `user_data`) VALUES
-('1e4fde5157e0e8c2d8ad0f21db1f3588', '127.0.0.1', 'Mozilla/5.0 (X11; Ubuntu; Linux i686; rv:27.0) Gecko/20100101 Firefox/27.0', 1397093804, 'a:4:{s:9:"user_data";s:0:"";s:5:"login";s:6:"welton";s:6:"logado";b:1;s:3:"adm";b:1;}');
-
--- --------------------------------------------------------
-
---
 -- Estrutura da tabela `tb_cliente`
 --
 
@@ -72,13 +63,13 @@ CREATE TABLE IF NOT EXISTS `tb_cliente` (
 INSERT INTO `tb_cliente` (`id`, `nome`, `cpf`, `rg`, `quadra`, `rua`, `casa`, `bairro`, `data_cadastro`, `cidade`, `telefone1`, `telefone2`, `email`) VALUES
 (10, 'Ana Carolina', '998.742.021-49', 6767, 12, '14', 78, 'Céu Azul', '2014-03-02 21:36:17', 'Valparaiso de Goiás3', '(61) 3629-1344', '(62) 4567-899', 'anacarolina@yahoo.com.br'),
 (11, 'Welton Moreira dos Santos', '998.742.021-49', 1212, 12, '14', 78, 'Céu Azul', '2014-03-02 22:05:35', 'Valparaíso de Goiás', '(61) 3629-1358', '(12) 1233-3333', 'weltonwms@gmail.com'),
-(12, 'Beto Pereira', '998.742.021-49', 23456, 34, '16', 12, 'Jardim Oriente', '2014-03-08 00:00:00', 'Valparaiso de Goiás', '(21) 3334-3431', '(21) 3334-3400', 'walisson@gmai.com'),
+(12, 'Beto Pereira', '998.742.021-49', 23456, 34, '16', 12, 'Jardim Oriente', '2014-03-08 00:00:00', 'Valparaiso de Goiás', '(21) 3334-3431', '(21) 3334-3400', 'beto@gmail.com'),
 (13, 'Carlos Pereira da Silva', '998.742.021-49', 23456, 34, '16', 12, 'Jardim Oriente', '2014-03-08 00:00:00', 'Valparaiso de Goiás', '(21) 3334-3431', '(21) 3334-3400', 'walisson@gmai.com'),
 (14, 'Diego Pereira', '998.742.021-49', 23456, 34, '16', 12, 'Jardim Oriente', '2014-03-08 00:00:00', 'Valparaiso de Goiás', '(21) 3334-3431', '(21) 3334-3400', 'walisson@gmai.com'),
 (17, 'Elaine Pereira', '998.742.021-49', 23456, 34, '16', 12, 'Jardim Oriente', '2014-03-08 00:00:00', 'Valparaiso de Goiás', '(21) 3334-3431', '(21) 3334-3400', 'walisson@gmai.com'),
-(18, 'Fernando Pereira da Silva', '382.128.541-91', 23456, 34, '16', 9, 'Jardim Oriente', '2014-03-08 00:00:00', 'Valparaiso de Goiás', '(21) 3334-3431', '(61) 3233-3333', 'walisson@gmai.com'),
+(18, 'Fernando Pereira da Silva', '022.714.331-00', 23456, 34, '16', 9, 'Jardim Oriente', '2014-03-08 00:00:00', 'Valparaiso de Goiás', '(21) 3334-3431', '(61) 3233-3333', 'walisson@gmai.com'),
 (19, 'Gabriel Pereira', '998.742.021-49', 23456, 34, '16', 12, 'Jardim Oriente', '2014-03-08 00:00:00', 'Valparaiso de Goiás', '(21) 3334-3431', '(21) 3334-3400', 'walisson@gmai.com'),
-(20, 'Huerta Pereira', '998.742.021-49', 23456, 34, '16', 12, 'Jardim Oriente', '2014-03-08 00:00:00', 'Valparaiso de Goiás', '(21) 3334-3431', '(21) 3334-3400', 'walisson@gmai.com'),
+(20, 'Huerta Pereira', '998.742.021-49', 23456, 34, '16', 12, 'Jardim Oriente', '2014-03-08 00:00:00', 'Valparaiso de Goiás', '(21) 3334-3431', '(21) 3334-3400', 'huerta@gmail.com'),
 (21, 'Jailson Pereira', '998.742.021-49', 23456, 34, '16', 12, 'Jardim Oriente', '2014-03-08 00:00:00', 'Valparaiso de Goiás', '(21) 3334-3431', '(21) 3334-3400', 'walisson@gmai.com'),
 (23, 'Walisson Pereira', '998.742.021-49', 23456, 34, '16', 12, 'Jardim Oriente', '2014-03-08 00:00:00', 'Valparaiso de Goiás', '(21) 33343431', '(21) 33343400', 'walisson@gmai.com'),
 (24, 'Wesley Pereira', '998.742.021-49', 23456, 34, '16', 12, 'Jardim Oriente', '2014-03-08 00:00:00', 'Valparaiso de Goiás', '(21) 3334-3431', '(21) 3334-3400', 'walisson@gmai.com'),
@@ -99,7 +90,7 @@ CREATE TABLE IF NOT EXISTS `tb_conta` (
   `data_cadastro` date NOT NULL,
   PRIMARY KEY (`id`),
   KEY `fk_idcliente` (`id_cliente`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=28 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=29 ;
 
 --
 -- Extraindo dados da tabela `tb_conta`
@@ -108,7 +99,8 @@ CREATE TABLE IF NOT EXISTS `tb_conta` (
 INSERT INTO `tb_conta` (`id`, `servico`, `nr_doc`, `id_cliente`, `nr_mensalidade`, `data_cadastro`) VALUES
 (25, 'Tv a Cabo', 'A-01', 12, NULL, '2014-04-05'),
 (26, 'Tv a Cabo Plus', 'A-02', 17, NULL, '2014-04-05'),
-(27, 'Internet de 20MB', 'A-03', 18, NULL, '2014-04-05');
+(27, 'Internet de 20MB', 'A-03', 18, NULL, '2014-04-05'),
+(28, 'Tv a Cabo', 'A-0123', 17, NULL, '2014-04-20');
 
 -- --------------------------------------------------------
 
@@ -127,7 +119,7 @@ CREATE TABLE IF NOT EXISTS `tb_mensalidade` (
   `valor_pago` decimal(10,2) DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `fk_idconta` (`id_conta`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=175 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=185 ;
 
 --
 -- Extraindo dados da tabela `tb_mensalidade`
@@ -150,11 +142,15 @@ INSERT INTO `tb_mensalidade` (`id`, `vencimento`, `valor`, `nr_parcela`, `id_con
 (158, '2014-05-09', 30.00, 0, 27, 1, '2014-04-05', 30.00),
 (159, '2014-06-09', 30.00, 0, 27, 1, '2014-04-04', 25.00),
 (160, '2014-07-09', 30.00, 0, 27, 1, '2014-04-06', 35.00),
-(170, '2014-10-09', 30.00, 0, 27, 1, '2014-04-09', 30.00),
-(171, '2014-11-09', 35.00, 0, 27, 1, '2014-04-09', 35.00),
-(172, '2014-12-09', 30.00, 0, 27, 0, NULL, NULL),
-(173, '2015-01-09', 30.00, 0, 27, 0, NULL, NULL),
-(174, '2015-02-09', 30.00, 0, 27, 0, NULL, NULL);
+(173, '2015-01-09', 30.00, 0, 27, 1, '2014-04-10', 30.00),
+(176, '2014-12-12', 30.00, 0, 27, 1, '2014-04-10', 30.00),
+(178, '2015-01-29', 30.00, 0, 27, 1, '2014-04-10', 30.00),
+(179, '2014-09-09', 23.00, 0, 28, 0, NULL, NULL),
+(180, '2014-10-09', 23.00, 0, 28, 0, NULL, NULL),
+(181, '2014-11-09', 23.00, 0, 28, 0, NULL, NULL),
+(182, '2014-12-09', 23.00, 0, 28, 0, NULL, NULL),
+(183, '2015-01-09', 23.00, 0, 28, 0, NULL, NULL),
+(184, '2015-02-09', 23.00, 0, 28, 0, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -164,21 +160,23 @@ INSERT INTO `tb_mensalidade` (`id`, `vencimento`, `valor`, `nr_parcela`, `id_con
 
 CREATE TABLE IF NOT EXISTS `tb_solicitacao_senha` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `nome` varchar(45) NOT NULL,
-  `email` varchar(45) NOT NULL,
-  `atendido` tinyint(1) NOT NULL,
+  `atendida` tinyint(1) NOT NULL,
+  `rejeitada` tinyint(1) DEFAULT NULL,
   `id_cliente` int(11) NOT NULL,
   `data_solicitacao` datetime NOT NULL,
   PRIMARY KEY (`id`),
   KEY `fk_idcliente` (`id_cliente`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=4 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=11 ;
 
 --
 -- Extraindo dados da tabela `tb_solicitacao_senha`
 --
 
-INSERT INTO `tb_solicitacao_senha` (`id`, `nome`, `email`, `atendido`, `id_cliente`, `data_solicitacao`) VALUES
-(3, 'Welton Moreira dos Santos', 'weltonwms@gmail.com', 0, 11, '2014-03-06 18:03:32');
+INSERT INTO `tb_solicitacao_senha` (`id`, `atendida`, `rejeitada`, `id_cliente`, `data_solicitacao`) VALUES
+(6, 1, 1, 20, '2014-04-20 21:11:46'),
+(8, 1, 1, 10, '2014-04-20 23:17:31'),
+(9, 1, 1, 12, '2014-04-20 23:24:16'),
+(10, 1, 0, 23, '2014-04-20 23:08:00');
 
 -- --------------------------------------------------------
 
@@ -194,7 +192,7 @@ CREATE TABLE IF NOT EXISTS `tb_usuario` (
   `id_cliente` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `fk_usuario_cliente1` (`id_cliente`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=5 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=16 ;
 
 --
 -- Extraindo dados da tabela `tb_usuario`
@@ -203,8 +201,9 @@ CREATE TABLE IF NOT EXISTS `tb_usuario` (
 INSERT INTO `tb_usuario` (`id`, `login`, `senha`, `adm`, `id_cliente`) VALUES
 (1, 'welton', 'e10adc3949ba59abbe56e057f20f883e', 1, NULL),
 (2, 'andre', 'e10adc3949ba59abbe56e057f20f883e', 1, NULL),
-(3, 'sergio', 'e10adc3949ba59abbe56e057f20f883e', 1, NULL),
-(4, 'ana''darc', 'e10adc3949ba59abbe56e057f20f883e', 1, NULL);
+(5, 'aninha', 'e10adc3949ba59abbe56e057f20f883e', 0, 10),
+(6, 'betowms', 'e10adc3949ba59abbe56e057f20f883e', 0, 12),
+(15, 'walisson', 'e10adc3949ba59abbe56e057f20f883e', 0, 23);
 
 --
 -- Restrições para as tabelas dumpadas

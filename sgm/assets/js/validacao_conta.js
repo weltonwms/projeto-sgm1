@@ -15,7 +15,7 @@ $(document).ready(function() {
 /*************************************************************************************/
 
 /*****************Regras de validação*************************************************/
-	$.validator.setDefaults({ ignore: ":hidden:not(select)" }) 
+	$.validator.setDefaults({ ignore: ":hidden:not(select)" }) ;
 	$("#form_conta").validate({
 		rules:{
 			servico:{required:true},

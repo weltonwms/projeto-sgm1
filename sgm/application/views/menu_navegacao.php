@@ -11,6 +11,13 @@
                                     </ul>
                                 
                                 </li>
+                                <li class="dropdown"><a data-toggle="dropdown" href="#">Gerenciar Usuários <span class="caret"></span></a>
+                                    <ul class="dropdown-menu">
+                                        <li><a href="<?php echo base_url('usuario') ?>">Cadastro</a></li>
+                                        <li><a href="<?php echo base_url('usuario/abrir_recuperacao_senha') ?>">Recuperação de Senha</a></li>  
+                                    </ul>
+                                
+                                </li>
 				<li class=""><a href="#">Emitir Relatório</a></li>
 			</ul>
 
