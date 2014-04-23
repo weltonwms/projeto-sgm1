@@ -18,7 +18,7 @@
                                     </ul>
                                 
                                 </li>
-				<li class=""><a href="#">Emitir Relatório</a></li>
+				<li class=""><a href="<?php echo base_url('relatorio') ?>">Emitir Relatório</a></li>
 			</ul>
 
 			<div class="navbar-right">
