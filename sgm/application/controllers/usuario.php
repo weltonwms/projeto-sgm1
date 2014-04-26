@@ -10,7 +10,7 @@ class Usuario extends CI_Controller {
         if (!$this->session->userdata('session_id') || !$this->session->userdata('logado') || !$this->session->userdata('adm')) {
             redirect("login");
         }
-        $this->load->model('Usuario_manager');
+        $this->load->model('usuario/Usuario_manager');
     }
 
     /*     * *************************************************************************
@@ -37,20 +37,20 @@ class Usuario extends CI_Controller {
     }
 
     public function abrir_recuperacao_senha() {
-        $this->load->model('Solicitacao_manager');
+        $this->load->model('usuario/Solicitacao_manager');
         $dados['solicitacoes'] = $this->Solicitacao_manager->get_solicitacoes_recuperacao_senha();
         $this->carrega_view('manter_recuperacao_senha', $dados);
     }
 
     public function abrir_solicitacao_usuario($id_solicitacao) {
-        $this->load->model('Solicitacao_manager');
+        $this->load->model('usuario/Solicitacao_manager');
         $dados['solicitacao'] = $this->Solicitacao_manager->get_solicitacao($id_solicitacao);
         $html = $this->load->view('atendimento_solicitacao_senha', $dados, true);
         echo $html;
     }
 
     public function atender_solicitacao_usuario() {
-        $this->load->model('Solicitacao_manager');
+        $this->load->model('usuario/Solicitacao_manager');
         $retorno = $this->Solicitacao_manager->atender_solicitacao_usuario($this->input->post());
         if ($retorno) {
             $this->session->set_flashdata('status', 'success');
@@ -63,7 +63,7 @@ class Usuario extends CI_Controller {
     }
 
     public function rejeitar_solicitacao($id_solicitacao) {
-        $this->load->model('Solicitacao_manager');
+        $this->load->model('usuario/Solicitacao_manager');
         $retorno = $this->Solicitacao_manager->rejeitar_solicitacao_usuario($id_solicitacao);
         if ($retorno) {
             $this->session->set_flashdata('status', 'success');
@@ -76,13 +76,13 @@ class Usuario extends CI_Controller {
     }
     
     public function abrir_cadastro_usuario(){
-        $this->load->model('Cliente_manager');
+        $this->load->model('cliente/Cliente_manager');
         $dados['clientes']=  $this->Cliente_manager->get_clientes();
         $this->carrega_view('novo_usuario',$dados);
     }
     
     public function editar($id_usuario){
-        $this->load->model('Cliente_manager');
+        $this->load->model('cliente/Cliente_manager');
         $dados['clientes']=  $this->Cliente_manager->get_clientes();
         $dados['usuario']=  $this->Usuario_manager->get_usuario($id_usuario);
         $this->carrega_view('usuario_alteracao',$dados);

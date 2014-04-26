@@ -1,14 +1,20 @@
+<?php
+echo "<script src='".base_url('assets/plugins/jquery.validate.js')."'></script>";
+echo "<script src='".base_url('assets/plugins/jquery.mask.js')."'></script>";
+echo "<script src='".base_url('assets/js/validacao_relatorio.js')."'></script>";
+
+?>
 <legend>Relatório de Mensalidades</legend>
 
 
 <div class="row">
-    <form action="<?php echo base_url('relatorio/gerar_relatorio') ?>" method="post">
+    <form id='form_relatorio' action="<?php echo base_url('relatorio/gerar_relatorio') ?>" method="post">
 
         <div class="col-md-2">
             <label class=""><span
                     class="glyphicon glyphicon-filter"></span> Período Inicial:</label>
             <div class="">
-                <input type="text" name="periodo_inicial" class="form-control"/>
+                <input type="text" name="periodo_inicial" class="form-control data"/>
 
             </div>
         </div>
@@ -19,7 +25,7 @@
             <label class=""><span
                     class="glyphicon glyphicon-filter"></span> Período Final:</label>
             <div class="">
-                <input type="text" name="periodo_final" class="form-control"/>
+                <input type="text" name="periodo_final" class="form-control data"/>
 
             </div>
         </div>

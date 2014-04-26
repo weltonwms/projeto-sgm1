@@ -7,7 +7,7 @@ class Mensalidade extends CI_Controller{
         if (!$this->session->userdata('session_id') || !$this->session->userdata('logado') || !$this->session->userdata('adm')) {
             redirect("login");
         }
-        $this->load->model('Mensalidade_manager');
+        $this->load->model('mensalidade/Mensalidade_manager');
         
     }
 
@@ -30,7 +30,7 @@ class Mensalidade extends CI_Controller{
     
        
     public function gerenciar($id_conta){
-        $this->load->model('Conta_manager');
+        $this->load->model('conta/Conta_manager');
         $dados['conta']= $this->Conta_manager->get_conta($id_conta);
         $this->carrega_view('manter_mensalidades', $dados);
     }
@@ -114,7 +114,7 @@ class Mensalidade extends CI_Controller{
     }
     
     public function detalhar_mensalidades_recebidas($id_conta){
-        $this->load->model('Conta_manager');
+        $this->load->model('conta/Conta_manager');
         $dados['conta']= $this->Conta_manager->get_conta($id_conta);
         $this->carrega_view('mensalidades_recebidas', $dados);
     }

@@ -4,7 +4,7 @@ class Conta_dao extends CI_Model {
 
     function __construct() {
         parent::__construct();
-        $this->load->model('Conta_model');
+        $this->load->model('conta/Conta_model');
     }
 
     public function get_contas() {

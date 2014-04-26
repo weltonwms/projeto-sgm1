@@ -50,7 +50,7 @@ class Login extends CI_Controller{
     }
     
     public function recuperar_senha(){
-        $this->load->model('Solicitacao_manager','solicitacao');
+        $this->load->model('usuario/Solicitacao_manager','solicitacao');
         $status=$this->solicitacao->solicitar_senha($this->input->post());
         $this->session->set_flashdata('msg',$this->enviar_msg($status) );
 	redirect("login/solicitar_recuperacao_senha");

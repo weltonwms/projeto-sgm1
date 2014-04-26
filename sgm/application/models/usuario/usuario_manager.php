@@ -1,11 +1,15 @@
 <?php
-
+/*
+ * Esta Classe é a classe entrada do Model. Responsável por intermediar com o
+ * Controler. Ela utiliza as outras Classes Model que ajudam a realizar todo o 
+ * trabalho com o Usuário.
+ */
 
 class Usuario_manager extends CI_Model {
     function __construct() {
         parent::__construct();
-        $this->load->model('Usuario_dao');
-        $this->load->model('Usuario_model');
+        $this->load->model('usuario/Usuario_dao');
+        $this->load->model('usuario/Usuario_model');
     }
     
     public function get_usuarios(){

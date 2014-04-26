@@ -19,7 +19,7 @@ class Solicitacao_manager extends CI_Model {
 
     function __construct() {
         parent::__construct();
-        $this->load->model('Solicitacao_senha', 'solicitacao_model');
+        $this->load->model('usuario/Solicitacao_senha', 'solicitacao_model');
     }
 
     public function solicitar_senha(array $post) {
@@ -89,7 +89,7 @@ class Solicitacao_manager extends CI_Model {
     }
 
     public function atender_solicitacao_usuario(array $post) {
-        $this->load->model('Usuario_model');
+        $this->load->model('usuario/Usuario_model');
         $this->Usuario_model->set_login($post['login']);
         $this->Usuario_model->set_senha($post['senha']);
         $this->Usuario_model->set_adm(0);
@@ -101,13 +101,13 @@ class Solicitacao_manager extends CI_Model {
             $retorno = $this->Usuario_model->gravar_alteracao();
         }
 
-        $this->load->model('Solicitacao_senha');
+        $this->load->model('usuario/Solicitacao_senha');
         $retorno+=$this->Solicitacao_senha->registrar_atendimento($post['id_solicitacao']);
         return $retorno;
     }
 
     public function rejeitar_solicitacao_usuario($id_solicitacao) {
-        $this->load->model('Solicitacao_senha');
+        $this->load->model('usuario/Solicitacao_senha');
         $retorno = $this->Solicitacao_senha->registrar_rejeicao_solicitacao($id_solicitacao);
         return $retorno;
     }
@@ -124,7 +124,7 @@ class Solicitacao_manager extends CI_Model {
     }
 
     public function get_solicitacao($id_solicitacao) {
-        $this->load->model('Solicitacao_senha');
+        $this->load->model('usuario/Solicitacao_senha');
         $this->db->where('id', $id_solicitacao);
         $solicitacao_banco = $this->db->get('tb_solicitacao_senha')->result();
         if (count($solicitacao_banco) == 1):

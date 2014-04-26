@@ -1,11 +1,15 @@
 <?php
-
+/*
+ * Esta Classe é a classe entrada do Model. Responsável por intermediar com o
+ * Controler. Ela utiliza as outras Classes Model que ajudam a realizar todo o 
+ * trabalho com  o Cliente.
+ */
 class cliente_manager extends CI_Model{
     
     function __construct() {
         parent::__construct();
-        $this->load->model('Cliente_dao');
-        $this->load->model('Cliente_model');
+        $this->load->model('cliente/Cliente_dao','Cliente_dao');
+        $this->load->model('cliente/Cliente_model','Cliente_model');
     }
     
     public function get_clientes(){
@@ -28,8 +32,7 @@ class cliente_manager extends CI_Model{
         $this->Cliente_model->set_telefone1($post['telefone1']);
         $this->Cliente_model->set_telefone2($post['telefone2']);
         $this->Cliente_model->set_email($post['email']);
-        //$this->Cliente_model->set_usuario($post['usuario']);
-       //$this->Cliente_model->set_senha($post['senha']);
+       
        return $this->Cliente_model->cadastrar();
     }
     
@@ -54,9 +57,7 @@ class cliente_manager extends CI_Model{
         $this->Cliente_model->set_telefone1($post['telefone1']);
         $this->Cliente_model->set_telefone2($post['telefone2']);
         $this->Cliente_model->set_email($post['email']);
-        //$this->Cliente_model->set_usuario($post['usuario']);
-       //$this->Cliente_model->set_senha($post['senha']);
-       
+              
         return $this->Cliente_model->gravar_alteracao();
     }
     

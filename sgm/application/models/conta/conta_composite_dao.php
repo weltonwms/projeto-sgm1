@@ -4,10 +4,10 @@ class Conta_composite_dao extends CI_Model{
     
     function __construct() {
         parent::__construct();
-        $this->load->model('Conta_composite');
-        $this->load->model('Conta_dao');
-        $this->load->model('Cliente_dao');
-        $this->load->model('Mensalidade_dao');
+        $this->load->model('conta/Conta_composite');
+        $this->load->model('conta/Conta_dao');
+        $this->load->model('cliente/Cliente_dao');
+        $this->load->model('mensalidade/Mensalidade_dao');
     }
     
      public function get_contas_composite() {
