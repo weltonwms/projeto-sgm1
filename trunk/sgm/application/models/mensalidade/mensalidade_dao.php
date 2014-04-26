@@ -9,7 +9,7 @@ class Mensalidade_dao  extends CI_Model{
     
      function __construct() {
         parent::__construct();
-        $this->load->model('Mensalidade_model');
+        $this->load->model('mensalidade/Mensalidade_model');
     }
 
     public function get_mensalidades($id_conta) {

@@ -93,14 +93,14 @@ class Solicitacao_senha extends CI_Model{
     public function set_id_cliente($id_cliente) {
          if($id_cliente !=null):
             $this->id_cliente = $id_cliente;
-            $this->load->model('Cliente_dao');
+            $this->load->model('cliente/Cliente_dao');
             $this->cliente=  $this->Cliente_dao->get_cliente($id_cliente);
         endif;
        
     }
     
     public function set_usuario($id_cliente){
-        $this->load->model('Usuario_dao');
+        $this->load->model('usuario/Usuario_dao');
         $usuario=  $this->Usuario_dao->get_usuario(null,$id_cliente);
         if($usuario){
             $this->usuario=$usuario;

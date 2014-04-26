@@ -8,7 +8,7 @@ class Relatorio extends CI_Controller{
             if(!$this->session->userdata('session_id') || !$this->session->userdata('logado') || !$this->session->userdata('adm')){
 		redirect("login");
             }
-        $this->load->model('Relatorio_manager');
+        $this->load->model('relatorio/Relatorio_manager');
     }
     
     /***************************************************************************

@@ -4,7 +4,7 @@
 class Usuario_dao extends CI_Model{
     function __construct() {
         parent::__construct();
-        $this->load->model('Usuario_model');
+        $this->load->model('usuario/Usuario_model');
     }
     
     public function get_usuarios(){

@@ -5,10 +5,10 @@ class Relatorio_manager extends CI_Model {
     public function __construct() {
         parent::__construct();
         $this->load->helper('util');
-        $this->load->model('Mensalidade_composite');
-        $this->load->model('Mensalidade_model');
-        $this->load->model('Cliente_model');
-        $this->load->model('Conta_model');
+        $this->load->model('mensalidade/Mensalidade_composite');
+        $this->load->model('mensalidade/Mensalidade_model');
+        $this->load->model('cliente/Cliente_model');
+        $this->load->model('conta/Conta_model');
     }
 
     public function get_relatorio(array $post) {

@@ -4,7 +4,7 @@ class cliente_dao extends CI_Model{
     
     function __construct() {
         parent::__construct();
-        $this->load->model('Cliente_model');
+        $this->load->model('cliente/Cliente_model','Cliente_model');
     }
     
     public function get_clientes(){

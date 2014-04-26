@@ -9,7 +9,7 @@ class Conta extends CI_Controller {
         if (!$this->session->userdata('session_id') || !$this->session->userdata('logado') || !$this->session->userdata('adm')) {
             redirect("login");
         }
-        $this->load->model('Conta_manager');
+        $this->load->model('conta/Conta_manager');
     }
 
     /*     * *************************************************************************
@@ -40,7 +40,7 @@ class Conta extends CI_Controller {
     }
     
     public function nova_conta(){
-        $this->load->model('Cliente_manager');
+        $this->load->model('cliente/Cliente_manager');
         $dados['clientes']= $this->Cliente_manager->get_clientes();
         $this->carrega_view('nova_conta', $dados);
     }
@@ -60,8 +60,8 @@ class Conta extends CI_Controller {
     }
     
     public function editar($id_conta){
-        $this->load->model('Cliente_manager');
-        $this->load->model('Conta_manager');
+        $this->load->model('cliente/Cliente_manager');
+        $this->load->model('conta/Conta_manager');
         $dados['clientes']= $this->Cliente_manager->get_clientes();
         $dados['conta']= $this->Conta_manager->get_conta($id_conta);
         $this->carrega_view('conta_alteracao', $dados);

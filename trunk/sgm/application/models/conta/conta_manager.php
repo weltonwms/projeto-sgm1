@@ -1,10 +1,14 @@
 <?php
-
+/*
+ * Esta Classe é a classe entrada do Model Conta. Responsável por intermediar com o
+ * Controler. Ela utiliza as outras Classes Model que ajudam a realizar todo o 
+ * trabalho com  a Conta.
+ */
 class Conta_manager extends CI_Model {
 
     function __construct() {
         parent::__construct();
-        $this->load->model('Conta_composite_dao');
+        $this->load->model('conta/Conta_composite_dao');
     }
 
     public function get_contas() {
@@ -24,14 +28,14 @@ class Conta_manager extends CI_Model {
     }
     
     public function cadastrar(array $post){
-        $this->load->model('Conta_model','conta');
+        $this->load->model('conta/Conta_model','conta');
         $this->conta->set_servico($post['servico']);
         $this->conta->set_nr_doc($post['nr_doc']);
         $this->conta->set_id_cliente($post['id_cliente']);
         $this->conta->set_data_cadastro($post['data_cadastro']);
         $id_conta=$this->conta->cadastrar();
         
-        $this->load->model('Mensalidade_dao');
+        $this->load->model('mensalidade/Mensalidade_dao');
         $this->Mensalidade_dao->set_total_mensalidades($post['nr_mensalidades']);
         $this->Mensalidade_dao->set_id_conta($id_conta);
         $this->Mensalidade_dao->set_data_inicial($post['vencimento']);
@@ -42,7 +46,7 @@ class Conta_manager extends CI_Model {
     }
     
     public function gravar_alteracao(array $post){
-        $this->load->model('Conta_model','conta');
+        $this->load->model('conta/Conta_model','conta');
         $this->conta->set_id($post['id_conta']);
         $this->conta->set_servico($post['servico']);
         $this->conta->set_nr_doc($post['nr_doc']);
@@ -52,7 +56,7 @@ class Conta_manager extends CI_Model {
     }
     
     public function excluir($id_conta){
-        $this->load->model('Conta_model','conta');
+        $this->load->model('conta/Conta_model','conta');
         return $this->conta->excluir($id_conta);
     }
 

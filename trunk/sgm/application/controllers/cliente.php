@@ -8,7 +8,7 @@ class Cliente extends CI_Controller{
             if(!$this->session->userdata('session_id') || !$this->session->userdata('logado') || !$this->session->userdata('adm')){
 		redirect("login");
             }
-        $this->load->model('Cliente_manager');
+        $this->load->model('cliente/Cliente_manager','Cliente_manager');
     }
     
     /***************************************************************************
@@ -46,7 +46,7 @@ class Cliente extends CI_Controller{
         }
         else{
             $this->session->set_flashdata('status','danger');
-            $this->session->set_flashdata('msg_confirm','Não foi Cadastrar Cliente!');
+            $this->session->set_flashdata('msg_confirm','Não foi Possível Cadastrar Cliente!');
         }
         redirect('cliente');
     }

@@ -1,11 +1,15 @@
 <?php
-
+/*
+ * Esta Classe é a classe entrada do Model. Responsável por intermediar com o
+ * Controler. Ela utiliza as outras Classes Model que ajudam a realizar todo o 
+ * trabalho com  a Mensalidade.
+ */
 
 class Mensalidade_manager extends CI_Model {
      function __construct() {
         parent::__construct();
-        $this->load->model('Mensalidade_dao');
-        $this->load->model('Mensalidade_model');
+        $this->load->model('mensalidade/Mensalidade_dao');
+        $this->load->model('mensalidade/Mensalidade_model');
     }
     
     public function get_mensalidades($id_conta){

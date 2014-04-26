@@ -88,16 +88,7 @@ echo "<script src='".base_url('assets/js/validacao_cliente.js')."'></script>";
                                         placeholder="Email"
 					class="form-control" type="text"> 
 			</div>
-                        <div class="col-md-4 control-group">
-				<label class="control-label" for="">Usuario</label> 
-                                <input id="usuario" name="usuario" placeholder="Usuario"
-					class="form-control" type="text"> 
-			</div>
-                        <div class="col-md-4 control-group ">
-				<label class="control-label" for="">Senha</label> 
-                                <input id="senha" name="senha" placeholder="Senha"
-					class="form-control" type="password"> <br><br>
-			</div>
+                        
 
 
                    
