@@ -1,8 +1,7 @@
 <?php
-echo "<script src='".base_url('assets/plugins/jquery.validate.js')."'></script>";
-echo "<script src='".base_url('assets/plugins/jquery.mask.js')."'></script>";
-echo "<script src='".base_url('assets/js/validacao_relatorio.js')."'></script>";
-
+echo "<script src='" . base_url('assets/plugins/jquery.validate.js') . "'></script>";
+echo "<script src='" . base_url('assets/plugins/jquery.mask.js') . "'></script>";
+echo "<script src='" . base_url('assets/js/validacao_relatorio.js') . "'></script>";
 ?>
 <legend>Relatório de Mensalidades</legend>
 
@@ -70,12 +69,17 @@ echo "<script src='".base_url('assets/js/validacao_relatorio.js')."'></script>";
 </div><!--Fechamento da Row-->
 
 
-
-
-
-
 <br>
-
+<?php if (isset($mensalidades)): ?>
+    <form target='_blank' method="post">
+        <input type="hidden" name="ultimo_post" value="<?php print base64_encode(serialize($post)) ?>"/>
+        <button formaction="<?php echo base_url('relatorio/teste') ?>" type="submit"
+           target='_blank' class="btn btn-success navbar-right"> <span
+                class="glyphicon glyphicon-print"></span> Formato de Impressão
+        </button>
+    </form>
+    <br><br>
+<?php endif; ?>
 
 <table id="tabela"
        class="table table-bordered table-striped custab table-condensed">
@@ -99,7 +103,7 @@ echo "<script src='".base_url('assets/js/validacao_relatorio.js')."'></script>";
                     <td><?php echo $mensalidade->get_vencimento() ?></td>
                     <td><?php echo $mensalidade->get_devedor() ?></td> 
                     <td><?php echo $mensalidade->get_nr_doc() ?></td>
-                    <td><?php echo $mensalidade->get_nr_doc() ?></td>
+                    <td><?php echo $mensalidade->get_id_conta() ?></td>
                     <td><?php echo $mensalidade->get_endereco() ?></td>
                     <td><?php echo $mensalidade->get_valor() ?></td>
                 </tr>  
@@ -109,6 +113,7 @@ echo "<script src='".base_url('assets/js/validacao_relatorio.js')."'></script>";
         ?>
     </tbody>
 </table>
+
 
 
 
