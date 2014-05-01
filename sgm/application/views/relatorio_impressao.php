@@ -62,9 +62,9 @@
 
 
 if ( isset($pdf) ) {
-$texto='<hr>';
 
-$font = Font_Metrics::get_font("helvetica", "bold"); $pdf->page_text(40, 48, "{$texto} PG: {PAGE_NUM} de {PAGE_COUNT}", $font, 9, array(0,0,0));
+
+$font = Font_Metrics::get_font("helvetica", "bold"); $pdf->page_text(535, 760, "{$texto} PG: {PAGE_NUM} de {PAGE_COUNT}", $font, 9, array(0,0,0));
 
 
 } </script>
