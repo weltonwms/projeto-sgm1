@@ -9,8 +9,8 @@
 	</div>
 
 	<div id="saudacao" class="text-muted" class="col-md-2">
-		Bem Vindo: <strong><?php echo $this->session->userdata('login')?></strong>
-
+		Bem Vindo: <strong><?php echo $this->session->userdata('login')?></strong><br>
+                Perfil: <strong><?php echo $this->session->userdata('adm')==1?'Adm':'Cliente'?></strong>
 	</div>
 	
 	<br><br><br>

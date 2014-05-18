@@ -73,6 +73,16 @@ class Conta_composite extends CI_Model{
         return count($somente_mensalidades_nao_quitadas);
     }
     
+    public function get_total_mensalidades_vencidas(){
+        $somente_mensalidades_vencidas=array();
+        foreach ($this->mensalidades as $mensalidade):
+            if(!$mensalidade->is_quitada() && $mensalidade->is_vencida()){
+                $somente_mensalidades_vencidas[]=$mensalidade;
+            }
+        endforeach;
+        return count($somente_mensalidades_vencidas);
+    }
+    
      public function get_total_mensalidades_recebidas(){
         $somente_mensalidades_quitadas=array();
         foreach ($this->mensalidades as $mensalidade):

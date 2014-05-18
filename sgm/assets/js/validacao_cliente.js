@@ -44,13 +44,13 @@ $(document).ready(function() {
         
         $("#form_solicitacao_senha").validate({
 		rules:{
-			nome:{required:true},
-			email:{required:true}
+			cpf:{required:true, verificaCPF:true},
+			email:{required:true, email:true}
 		},
 	
 		messages:{
-			nome:{required:'Digite o Nome'},
-			email:{required:'Digite o Email'}
+			cpf:{required:'Digite o CPF'},
+			email:{required:'Digite o Email',email:'O Email está incorreto'}
 		}
 	});//fechamento do validate
         

@@ -61,7 +61,7 @@ class Solicitacao_manager extends CI_Model {
     }
 
     private function inicializar(array $post) {
-        $this->is_cliente_valido = $this->validacao_cliente($post['nome'], $post['email']);
+        $this->is_cliente_valido = $this->validacao_cliente($post['cpf'], $post['email']);
         $this->db->where('id_cliente', $this->is_cliente_valido);
         $retorno = $this->db->get('tb_solicitacao_senha')->result();
         if (count($retorno) > 0) {
@@ -75,8 +75,8 @@ class Solicitacao_manager extends CI_Model {
         }
     }
 
-    private function validacao_cliente($nome, $email) {
-        $this->db->where('nome', $nome);
+    private function validacao_cliente($cpf, $email) {
+        $this->db->where('cpf', $cpf);
         $this->db->where('email', $email);
         $retorno = $this->db->get('tb_cliente')->result();
         if (count($retorno) == 1) {
