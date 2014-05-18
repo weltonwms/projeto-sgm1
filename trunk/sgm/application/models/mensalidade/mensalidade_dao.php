@@ -39,7 +39,6 @@ class Mensalidade_dao  extends CI_Model{
             $mensalidade->set_quitada($mensalidade_banco[0]->quitada);
             $mensalidade->set_vencimento($mensalidade_banco[0]->vencimento);
             $mensalidade->set_valor($mensalidade_banco[0]->valor);
-            $mensalidade->set_nr_parcela($mensalidade_banco[0]->nr_parcela);
             $mensalidade->set_data_quitacao($mensalidade_banco[0]->data_quitacao);
             $mensalidade->set_valor_pago($mensalidade_banco[0]->valor_pago);
             return $mensalidade;
