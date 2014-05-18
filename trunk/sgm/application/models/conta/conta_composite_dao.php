@@ -12,6 +12,7 @@ class Conta_composite_dao extends CI_Model{
     
      public function get_contas_composite() {
          $lista = array();
+       
         $this->db->order_by("id", "asc");
         $contas_banco = $this->db->get('tb_conta')->result();
         if (count($contas_banco) > 0) {
@@ -24,13 +25,16 @@ class Conta_composite_dao extends CI_Model{
          return $lista;
     }
     
-     public function get_contas_receber_composite() {
+     public function get_contas_receber_composite($id_cliente=null) {
          $lista = array();
          $this->db->distinct();
          $this->db->select('c.id');
          $this->db->from('tb_conta c');
          $this->db->join('tb_mensalidade m', 'c.id = m.id_conta','inner');
         $this->db->where('m.quitada',0);
+         if($id_cliente!=NULL){
+            $this->db->where('c.id_cliente',$id_cliente);
+        }
         $contas_banco = $this->db->get()->result();
        
         if (count($contas_banco) > 0) {

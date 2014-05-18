@@ -15,14 +15,14 @@ echo "<script src='".base_url('assets/js/validacao_cliente.js')."'></script>";
 	<form method="post" id="form_solicitacao_senha">
                         <div class="col-md-12 control-group ">
 
-				<label class="control-label" for="Nome">Nome Completo</label> <input
-					id="nome" name="nome" placeholder="Nome"
+				<label class="control-label" for="cpf">CPF</label> <input
+					id="cpf" name="cpf" placeholder="CPF"
 					class="form-control" type="text">
 
 			</div>
                       
                          <div class="col-md-12 control-group">
-				<label class="control-label" for="">Email</label> 
+				<label class="control-label" for="email">Email</label> 
                                 <input 	id="email" name="email" placeholder="Email"
 					class="form-control" type="text"> 
 			</div>

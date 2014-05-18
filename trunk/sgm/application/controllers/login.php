@@ -22,12 +22,14 @@ class Login extends CI_Controller{
 	      	$senha=md5($this->input->post('senha'));
 		$this->db->where('login',$usuario);
 		$this->db->where('senha',$senha);
-		$this->db->where('adm',1);
-		$usuario= $this->db->get('tb_usuario')->result();
-		if(count($usuario)===1){
-			$dados=array('login'=>$usuario[0]->login,'logado'=>TRUE,'adm'=>TRUE);
+		$usuario_banco= $this->db->get('tb_usuario')->result();
+		if(count($usuario_banco)===1){
+			$dados=array('login'=>$usuario_banco[0]->login,'logado'=>TRUE,
+                            'id_usuario'=>$usuario_banco[0]->id,
+                            'id_cliente'=>$usuario_banco[0]->id_cliente,
+                            'adm'=>$usuario_banco[0]->adm);
 			$this->session->set_userdata($dados);
-			redirect("home");
+			$this->redirecionar();
 		}
 		else {
 			$this->session->set_flashdata('msg', 'Acesso Não Autorizado.  Usuário ou Senha Incorretos!');
@@ -43,7 +45,16 @@ class Login extends CI_Controller{
         
     }
     
-    public function solicitar_recuperacao_senha(){
+    private function redirecionar(){
+        if($this->session->userdata('adm')==1){
+            redirect('home');
+        }
+        else{
+            redirect('sessao_cliente/home');
+        }
+    }
+
+        public function solicitar_recuperacao_senha(){
         $this->load->view('html_header');
 	$this->load->view('recuperacao_senha');
 	$this->load->view('html_footer');
@@ -59,7 +70,7 @@ class Login extends CI_Controller{
     
     public function enviar_msg($status){
         $mensagem=array(
-            0=>"Cliente Inválido. Esse email e Nome não Constam na Base de Dados!",
+            0=>"Cliente Inválido. Esse email com CPF não Constam na Base de Dados!",
             1=>"A solicitação já foi registrada. Aguarde a Análise de Seu pedido.",
             2=>"Solicitação Enviada com Sucesso! <br>
                 Caso a solicitação seja aprovada, em torno de 48h Você receberá uma nova Senha por email",

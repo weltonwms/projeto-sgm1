@@ -18,8 +18,14 @@ class Conta_manager extends CI_Model {
      public function get_contas_receber() {
        return $this->Conta_composite_dao->get_contas_receber_composite();
     }
-    
-    public function get_contas_recebidas(){
+    public function get_contas_pendentes(){
+        $id_cliente=  $this->session->userdata('id_cliente');
+        if($id_cliente!=NULL){
+            return $this->Conta_composite_dao->get_contas_receber_composite($id_cliente);
+        }
+    }
+
+        public function get_contas_recebidas(){
        return $this->Conta_composite_dao->get_contas_recebidas_composite(); 
     }
 
