@@ -41,6 +41,8 @@ class Mensalidade_composite extends CI_Model {
     public function get_id_conta(){
         return $this->mensalidade->get_id_conta();
     }
+    
+    
 
 }
 

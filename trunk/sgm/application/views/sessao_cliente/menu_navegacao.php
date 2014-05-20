@@ -8,12 +8,14 @@
 			</ul>
 			<div class="navbar-right">
 				<ul class="nav navbar-nav">
-					<li class=""><a href="#">Preferencias</a></li>
+					<li class=""><a href="<?php echo base_url('sessao_cliente/home/abrir_alteracao_senha') ?>">Alterar Senha</a></li>
 
-				</ul>
-				<a href="<?php echo base_url('login/deslogar') ?>" class="navbar-btn btn btn-danger">
-					<span class="glyphicon glyphicon-off"></span> Sair
-				</a>
+                                        <li>
+                                            <a href="<?php echo base_url('login/deslogar') ?>" class="sair">
+                                                <span class="glyphicon glyphicon-off"></span> Sair
+                                            </a>
+                                        </li>
+                                </ul>
 			</div>
 		</nav>
 

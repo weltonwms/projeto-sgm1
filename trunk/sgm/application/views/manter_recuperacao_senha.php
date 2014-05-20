@@ -7,6 +7,8 @@
 <?php if($this->session->flashdata('msg_confirm')!=null):?>
 	<div class="alert alert-<?php echo $this->session->flashdata('status')?> alert-dismissable">
   		<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                <?php $icone= $this->session->flashdata('status')=='danger'? 'remove':'ok'?>
+                <?php echo "<span class=\"glyphicon glyphicon-$icone  \"></span>&nbsp"?>
   		 <?php echo $this->session->flashdata('msg_confirm')?>
 	</div>
 <?php endif;?>

@@ -10,6 +10,7 @@ class Relatorio_manager extends CI_Model {
         $this->load->model('mensalidade/Mensalidade_model');
         $this->load->model('cliente/Cliente_model');
         $this->load->model('conta/Conta_model');
+        $this->load->model('relatorio/Relatorio_model');
     }
 
     public function get_relatorio(array $post) {
@@ -35,9 +36,8 @@ class Relatorio_manager extends CI_Model {
             $lista[]=$composite;
             
         endforeach;
-        
-       
-        return $lista;
+       $this->Relatorio_model->set_mensalidades($lista);
+       return $this->Relatorio_model;
     }
 
     private function executar_query(array $post) {

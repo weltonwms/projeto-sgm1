@@ -35,7 +35,7 @@ class Relatorio extends CI_Controller{
     }
     
     public function gerar_relatorio(){
-        $dados['mensalidades']=  $this->Relatorio_manager->get_relatorio($this->input->post());
+        $dados['relatorio']=  $this->Relatorio_manager->get_relatorio($this->input->post());
         $dados['post']= $this->input->post();
         $this->carrega_view('relatorio',$dados); 
     }
@@ -44,7 +44,7 @@ class Relatorio extends CI_Controller{
         
         $post_codificado=  $this->input->post('ultimo_post');
         $ultimo_post = unserialize(base64_decode($post_codificado));
-        $dados['mensalidades']=  $this->Relatorio_manager->get_relatorio($ultimo_post);
+        $dados['relatorio']=  $this->Relatorio_manager->get_relatorio($ultimo_post);
         $dados['informacao']=$ultimo_post;
         $html=$this->load->view('relatorio_impressao',  $dados,TRUE);
         $this->load->library('pdf');
