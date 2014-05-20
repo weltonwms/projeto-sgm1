@@ -76,6 +76,19 @@ class Usuario_model extends CI_Model {
         return;
       
     }
+    
+    public function alterar_senha($id_usuario,$senha_antiga, $senha_nova){
+        $this->db->where('id',$id_usuario);
+        $resultado=  $this->db->get('tb_usuario')->result();
+        
+        if($resultado[0]->senha==md5($senha_antiga)){
+            $dados['senha']=md5($senha_nova);
+            $this->db->where('id',$id_usuario);
+            $this->db->update('tb_usuario',$dados);
+            return $this->db->affected_rows();
+        }
+        return -2;
+    }
 
     public function get_id() {
         return $this->id;

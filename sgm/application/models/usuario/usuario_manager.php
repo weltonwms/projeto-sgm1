@@ -40,6 +40,15 @@ class Usuario_manager extends CI_Model {
     public function excluir($id_usuario){
        return $this->Usuario_model->excluir($id_usuario);
     }
+    
+    public function alterar_senha(array $post){
+        $id_usuario=  $this->session->userdata('id_usuario');
+        if($post['senha_nova']==$post['senha_confirmacao']){
+            return $this->Usuario_model->alterar_senha($id_usuario, $post['senha_antiga'],
+                                                        $post['senha_nova']);
+        }
+        return -1;
+    }
 }
 
 

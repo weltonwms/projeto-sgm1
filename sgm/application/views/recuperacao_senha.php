@@ -4,12 +4,14 @@ echo "<script src='".base_url('assets/plugins/jquery.mask.js')."'></script>";
 echo "<script src='".base_url('assets/js/validacao_cliente.js')."'></script>";
 ?>
 <h2 class="well text-center text-primary">Recuperação de Senha</h2>
+
 <?php if ($this->session->flashdata('msg')!=null):?>
 <div class="alert alert-warning  alert-dismissable col-md-6 col-md-offset-3">
     <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
     <p><?php echo $this->session->flashdata('msg');?></p> 
 </div>
 <?php endif?>
+
 <br><br>
 <div class="box_recuperacao_senha well">
 	<form method="post" id="form_solicitacao_senha">

@@ -70,7 +70,7 @@ echo "<script src='" . base_url('assets/js/validacao_relatorio.js') . "'></scrip
 
 
 <br>
-<?php if (isset($mensalidades)): ?>
+<?php if (isset($relatorio)): ?>
     <form target='_blank' method="post">
         <input type="hidden" name="ultimo_post" value="<?php print base64_encode(serialize($post)) ?>"/>
         <button formaction="<?php echo base_url('relatorio/teste') ?>" type="submit"
@@ -96,8 +96,9 @@ echo "<script src='" . base_url('assets/js/validacao_relatorio.js') . "'></scrip
     </thead>
     <tbody>
         <?php
-        if (isset($mensalidades)):
-            foreach ($mensalidades as $mensalidade):
+        if (isset($relatorio)): 
+          
+            foreach ($relatorio->get_mensalidades() as $mensalidade):
                 ?>
                 <tr>
                     <td><?php echo $mensalidade->get_vencimento() ?></td>

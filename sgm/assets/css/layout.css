@@ -110,6 +110,18 @@ header.row{
 
 }
 
+.sair{
+    background-color: #d9534f;
+    border-color: #D43F3A;
+}
+
+
+    
+ul.nav.navbar-nav > li > a.sair:hover, ul.nav.navbar-nav > li > a.sair:focus{
+    color:#D43F3A;
+
+}
+
 
 
 ul.nav.navbar-nav > li > a {
