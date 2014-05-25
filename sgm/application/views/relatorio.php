@@ -73,7 +73,7 @@ echo "<script src='" . base_url('assets/js/validacao_relatorio.js') . "'></scrip
 <?php if (isset($relatorio)): ?>
     <form target='_blank' method="post">
         <input type="hidden" name="ultimo_post" value="<?php print base64_encode(serialize($post)) ?>"/>
-        <button formaction="<?php echo base_url('relatorio/teste') ?>" type="submit"
+        <button formaction="<?php echo base_url('relatorio/imprimir') ?>" type="submit"
            target='_blank' class="btn btn-success navbar-right"> <span
                 class="glyphicon glyphicon-print"></span> Formato de Impressão
         </button>

@@ -20,7 +20,7 @@ $(document).ready(function() {
         $.validator.setDefaults({ ignore: ":hidden:not(select)" }) 
 	$("#form_usuario").validate({
 		rules:{
-                        senha_cadastro:{required:true},
+                        senha_cadastro:{required:true, minlength:4},
 			login:{required:true},
 			perfil:{required:true},
                         id_cliente:{required:true}
@@ -28,7 +28,7 @@ $(document).ready(function() {
 		},
 	
 		messages:{
-                        senha_cadastro:{required:'Digite a Senha'},
+                        senha_cadastro:{required:'Digite a Senha',minlength: "Digite senha maior que 3 digitos"},
 			login:{required:'Digite o Login'},
 			perfil:{required:'Selecione o Perfil'},
                         id_cliente:{required:'Selecione o Cliente'}

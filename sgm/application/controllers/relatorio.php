@@ -40,7 +40,7 @@ class Relatorio extends CI_Controller{
         $this->carrega_view('relatorio',$dados); 
     }
     
-    public function teste(){
+    public function imprimir(){
         
         $post_codificado=  $this->input->post('ultimo_post');
         $ultimo_post = unserialize(base64_decode($post_codificado));
