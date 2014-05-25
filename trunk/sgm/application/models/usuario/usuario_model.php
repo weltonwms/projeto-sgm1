@@ -33,16 +33,20 @@ class Usuario_model extends CI_Model {
     }
 
     public function cadastrar() {
-        $dados = array(
-            'login' => $this->login,
-            'adm' => $this->adm,
-            'id_cliente' => $this->id_cliente
-        );
-        $dados['senha'] = md5($this->senha);
-        $this->db->insert('tb_usuario', $dados);
+        if ($this->is_cadastrado()) {
+            return -1;
+        } else {
+            $dados = array(
+                'login' => $this->login,
+                'adm' => $this->adm,
+                'id_cliente' => $this->id_cliente
+            );
+            $dados['senha'] = md5($this->senha);
+            $this->db->insert('tb_usuario', $dados);
 
-        if ($this->db->affected_rows() > 0) {
-            return $this->db->insert_id();
+            if ($this->db->affected_rows() > 0) {
+                return $this->db->insert_id();
+            }
         }
         return;
     }
@@ -66,28 +70,38 @@ class Usuario_model extends CI_Model {
         }
         return;
     }
-    
-    public function excluir($id_usuario){
-        $this->db->where('id',$id_usuario);
+
+    public function excluir($id_usuario) {
+        $this->db->where('id', $id_usuario);
         $this->db->delete('tb_usuario');
-        if($this->db->affected_rows()>0){
-             return TRUE;
+        if ($this->db->affected_rows() > 0) {
+            return TRUE;
         }
         return;
-      
     }
-    
-    public function alterar_senha($id_usuario,$senha_antiga, $senha_nova){
-        $this->db->where('id',$id_usuario);
-        $resultado=  $this->db->get('tb_usuario')->result();
-        
-        if($resultado[0]->senha==md5($senha_antiga)){
-            $dados['senha']=md5($senha_nova);
-            $this->db->where('id',$id_usuario);
-            $this->db->update('tb_usuario',$dados);
+
+    public function alterar_senha($id_usuario, $senha_antiga, $senha_nova) {
+        $this->db->where('id', $id_usuario);
+        $resultado = $this->db->get('tb_usuario')->result();
+
+        if ($resultado[0]->senha == md5($senha_antiga)) {
+            $dados['senha'] = md5($senha_nova);
+            $this->db->where('id', $id_usuario);
+            $this->db->update('tb_usuario', $dados);
             return $this->db->affected_rows();
         }
         return -2;
+    }
+
+    private function is_cadastrado() {
+        if ($this->id_cliente != NULL):
+            $this->db->where('id_cliente', $this->id_cliente);
+            $resultado = $this->db->get('tb_usuario')->result();
+            if (count($resultado) > 0){
+                return TRUE;
+            }
+        endif;
+        return;
     }
 
     public function get_id() {

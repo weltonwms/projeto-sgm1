@@ -90,15 +90,28 @@ class Usuario extends CI_Controller {
     
     public function cadastrar(){
         $retorno=$this->Usuario_manager->cadastrar($this->input->post());
-        if($retorno){
-            $this->session->set_flashdata('status','success');
-            $this->session->set_flashdata('msg_confirm','Usuário Cadastrado com Sucesso!');
+        $this->set_mensagem_cadastro($retorno);
+        redirect('usuario');
+    }
+    
+    private function set_mensagem_cadastro($retorno){
+        $status='';
+        $mensagem='';
+        if($retorno==-1){
+            $status='danger';
+            $mensagem='Cliente Já possui Cadastro de Usuário!';
+        }
+        elseif ($retorno>0) {
+            $status='success';
+            $mensagem='Usuário Cadastrado com Sucesso!';
         }
         else{
-            $this->session->set_flashdata('status','danger');
-            $this->session->set_flashdata('msg_confirm','Usuário não Cadastrado!');
+            $status='danger';
+            $mensagem='Usuário não Cadastrado!';
         }
-        redirect('usuario');
+        $this->session->set_flashdata('status',$status);
+        $this->session->set_flashdata('msg_confirm',$mensagem);
+            
     }
     
     

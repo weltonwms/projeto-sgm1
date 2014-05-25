@@ -13,6 +13,7 @@ echo "<script src='".base_url('assets/js/validacao_login.js')."'></script>";
 	</div>
 <?php endif;?>
 
+
 <div class="row">
     <div class="col-md-offset-2 col-md-7">
         <form method="POST" id="form_login";
