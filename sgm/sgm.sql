@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: localhost
--- Tempo de Geração: 18/05/2014 às 09h56min
+-- Tempo de Geração: 01/06/2014 às 19h37min
 -- Versão do Servidor: 5.5.35
 -- Versão do PHP: 5.3.10-1ubuntu3.10
 
@@ -40,7 +40,7 @@ CREATE TABLE IF NOT EXISTS `ci_sessions` (
 --
 
 INSERT INTO `ci_sessions` (`session_id`, `ip_address`, `user_agent`, `last_activity`, `user_data`) VALUES
-('ee93b4e9e5f0821a88d21a8b0268a78e', '127.0.0.1', 'Mozilla/5.0 (X11; Ubuntu; Linux i686; rv:27.0) Gecko/20100101 Firefox/27.0', 1400369112, '');
+('ee3dc44de418038ab52cbf367a21aec0', '127.0.0.1', 'Mozilla/5.0 (X11; Ubuntu; Linux i686; rv:27.0) Gecko/20100101 Firefox/27.0', 1401635019, '');
 
 -- --------------------------------------------------------
 
@@ -50,11 +50,11 @@ INSERT INTO `ci_sessions` (`session_id`, `ip_address`, `user_agent`, `last_activ
 
 CREATE TABLE IF NOT EXISTS `tb_cliente` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `nome` varchar(45) NOT NULL,
-  `cpf` varchar(45) DEFAULT NULL,
+  `nome` varchar(60) NOT NULL,
+  `cpf` varchar(14) NOT NULL,
   `rg` int(11) DEFAULT NULL,
   `quadra` tinyint(4) NOT NULL,
-  `rua` varchar(45) NOT NULL,
+  `rua` varchar(60) NOT NULL,
   `casa` tinyint(4) NOT NULL,
   `bairro` varchar(45) DEFAULT NULL,
   `data_cadastro` datetime NOT NULL,
@@ -62,8 +62,9 @@ CREATE TABLE IF NOT EXISTS `tb_cliente` (
   `telefone1` varchar(45) DEFAULT NULL,
   `telefone2` varchar(45) DEFAULT NULL,
   `email` varchar(45) DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=28 ;
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `cpf` (`cpf`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=28 ;
 
 --
 -- Extraindo dados da tabela `tb_cliente`
@@ -93,14 +94,14 @@ INSERT INTO `tb_cliente` (`id`, `nome`, `cpf`, `rg`, `quadra`, `rua`, `casa`, `b
 
 CREATE TABLE IF NOT EXISTS `tb_conta` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `servico` varchar(45) NOT NULL,
+  `servico` varchar(60) NOT NULL,
   `nr_doc` varchar(45) DEFAULT NULL,
   `id_cliente` int(11) NOT NULL,
   `nr_mensalidade` tinyint(4) DEFAULT NULL,
   `data_cadastro` date NOT NULL,
   PRIMARY KEY (`id`),
   KEY `fk_idcliente` (`id_cliente`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=41 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=42 ;
 
 --
 -- Extraindo dados da tabela `tb_conta`
@@ -111,7 +112,8 @@ INSERT INTO `tb_conta` (`id`, `servico`, `nr_doc`, `id_cliente`, `nr_mensalidade
 (26, 'Tv a Cabo Plus', 'A-02', 17, NULL, '2014-04-05'),
 (27, 'Internet de 20MB', 'A-03', 18, NULL, '2014-04-05'),
 (36, 'Internet de 10MB', 'A-08', 27, NULL, '2014-05-01'),
-(40, 'Tv a Cabo', 'A-13', 10, NULL, '2014-05-17');
+(40, 'Tv a Cabo2', 'A-13', 10, NULL, '2014-05-17'),
+(41, 'Tv a Cabo Plus', 'A-041', 14, NULL, '2014-05-19');
 
 -- --------------------------------------------------------
 
@@ -129,7 +131,7 @@ CREATE TABLE IF NOT EXISTS `tb_mensalidade` (
   `valor_pago` decimal(10,2) DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `fk_idconta` (`id_conta`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=264 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=276 ;
 
 --
 -- Extraindo dados da tabela `tb_mensalidade`
@@ -142,7 +144,6 @@ INSERT INTO `tb_mensalidade` (`id`, `vencimento`, `valor`, `id_conta`, `quitada`
 (146, '2014-07-09', 24.00, 25, 1, '2014-04-05', 24.00),
 (147, '2014-08-09', 24.00, 25, 1, '2014-04-05', 24.00),
 (148, '2014-09-09', 24.00, 25, 1, '2014-04-05', 24.00),
-(149, '2014-10-09', 25.00, 25, 1, '2014-04-05', 25.00),
 (152, '2014-05-09', 24.00, 26, 1, '2014-04-05', 24.00),
 (153, '2014-06-09', 24.00, 26, 1, '2014-04-05', 24.00),
 (154, '2014-07-09', 24.00, 26, 1, '2014-04-05', 24.00),
@@ -168,7 +169,19 @@ INSERT INTO `tb_mensalidade` (`id`, `vencimento`, `valor`, `id_conta`, `quitada`
 (260, '2014-09-20', 25.00, 40, 0, NULL, NULL),
 (261, '2014-10-20', 25.00, 40, 0, NULL, NULL),
 (262, '2014-11-20', 25.00, 40, 0, NULL, NULL),
-(263, '2014-12-20', 25.00, 40, 0, NULL, NULL);
+(263, '2014-12-20', 25.00, 40, 1, '2014-05-22', 25.00),
+(264, '2014-09-09', 30.00, 41, 0, NULL, NULL),
+(265, '2014-10-09', 30.00, 41, 0, NULL, NULL),
+(266, '2014-11-09', 30.00, 41, 0, NULL, NULL),
+(267, '2014-12-09', 30.00, 41, 0, NULL, NULL),
+(268, '2015-01-09', 30.00, 41, 0, NULL, NULL),
+(269, '2015-02-09', 30.00, 41, 0, NULL, NULL),
+(270, '2015-03-09', 30.00, 41, 0, NULL, NULL),
+(271, '2015-04-09', 30.00, 41, 0, NULL, NULL),
+(272, '2015-05-09', 30.00, 41, 0, NULL, NULL),
+(273, '2015-06-09', 30.00, 41, 0, NULL, NULL),
+(274, '2015-07-09', 30.00, 41, 0, NULL, NULL),
+(275, '2015-08-09', 30.00, 41, 0, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -183,15 +196,15 @@ CREATE TABLE IF NOT EXISTS `tb_solicitacao_senha` (
   `id_cliente` int(11) NOT NULL,
   `data_solicitacao` datetime NOT NULL,
   PRIMARY KEY (`id`),
-  KEY `fk_idcliente` (`id_cliente`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
+  UNIQUE KEY `fk_idcliente` (`id_cliente`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=2 ;
 
 --
 -- Extraindo dados da tabela `tb_solicitacao_senha`
 --
 
 INSERT INTO `tb_solicitacao_senha` (`id`, `atendida`, `rejeitada`, `id_cliente`, `data_solicitacao`) VALUES
-(1, 1, 1, 10, '2014-05-16 17:28:10');
+(1, 0, 0, 10, '2014-05-21 19:05:36');
 
 -- --------------------------------------------------------
 
@@ -206,8 +219,8 @@ CREATE TABLE IF NOT EXISTS `tb_usuario` (
   `adm` tinyint(1) DEFAULT NULL,
   `id_cliente` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`),
-  KEY `fk_usuario_cliente1` (`id_cliente`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=19 ;
+  UNIQUE KEY `id_cliente` (`id_cliente`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=19 ;
 
 --
 -- Extraindo dados da tabela `tb_usuario`
@@ -216,9 +229,7 @@ CREATE TABLE IF NOT EXISTS `tb_usuario` (
 INSERT INTO `tb_usuario` (`id`, `login`, `senha`, `adm`, `id_cliente`) VALUES
 (1, 'welton', 'e10adc3949ba59abbe56e057f20f883e', 1, NULL),
 (2, 'andre', 'e10adc3949ba59abbe56e057f20f883e', 1, NULL),
-(5, 'aninha', '25d55ad283aa400af464c76d713c07ad', 0, 10),
-(6, 'betowms', 'e10adc3949ba59abbe56e057f20f883e', 0, 12),
-(15, 'walisson', 'e10adc3949ba59abbe56e057f20f883e', 0, 23),
+(5, 'aninha', 'e10adc3949ba59abbe56e057f20f883e', 0, 10),
 (18, 'ximenes', 'e10adc3949ba59abbe56e057f20f883e', 0, 27);
 
 --
