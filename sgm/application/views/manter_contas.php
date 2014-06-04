@@ -2,6 +2,7 @@
 <?php echo "<script src='".base_url('assets/js/modalexclusao.js')."'></script>"; ?>
 <?php echo "<script src='".base_url('assets/plugins/data_table.js')."'></script>"; ?>
 <?php echo "<script src='".base_url('assets/js/tabela.js')."'></script>"; ?>
+<?php echo "<script src='" . base_url('assets/js/pendencia.js') . "'></script>"; ?>
 <legend>Lista de Contas a Receber</legend>
 
 <?php if($this->session->flashdata('msg_confirm')!=null):?>
@@ -31,6 +32,7 @@
 			<th>Devedor</th>
                         <th class="col-md-1 text-center">Total Mensalidades</th>
                         <th class="col-md-1 text-center">Mensalidades a Receber</th>
+                        <th class="col-md-1 text-center">Mensalidades Vencidas</th>
 			<th class="col-md-1 text-center"><span class="glyphicon glyphicon-pencil"></span> Editar</th>
 			<th class="col-md-1 text-center"><span class="text-danger"><span class="glyphicon glyphicon-trash">
                              </span>Excluir</span>
@@ -50,6 +52,7 @@
 		 <td><?php echo $conta->get_nome_cliente() ;?></td>
                  <td><?php echo $conta->get_total_mensalidades() ;?></td>
                  <td><?php echo $conta->get_total_mensalidades_receber() ;?></td>
+                 <td class="vencida"><?php echo $conta->get_total_mensalidades_vencidas() ;?></td>
 		<td class="text-center">
                     <a href="<?php echo base_url('conta/editar').'/'.$conta->get_id()?>">
                         <span class="glyphicon glyphicon-pencil"></span> 
