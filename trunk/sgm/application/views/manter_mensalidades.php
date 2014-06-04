@@ -87,7 +87,8 @@
             <tr>
                 <td class="parcela"><?php echo $mensalidade->get_nr_parcela() . " de " . $conta->get_total_mensalidades(); ?></td>
                 <td class="vencimento"><?php echo $mensalidade->get_vencimento(); ?></td>
-                <td><?php echo $mensalidade->get_status(); ?></td>
+                <td <?php if($mensalidade->is_vencida()) echo "class='danger'"?>>
+                    <?php echo $mensalidade->get_status(); ?></td>
                 <td class="valor"><?php echo "R$ " . number_format($mensalidade->get_valor(), 2, ",", "."); ?></td>
 
                 <td class="text-center">
