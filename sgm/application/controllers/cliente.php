@@ -1,6 +1,6 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
-
+//2016
 class Cliente extends CI_Controller{
     
     public function __construct(){
